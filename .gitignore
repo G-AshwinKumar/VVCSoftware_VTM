@@ -1,9 +1,6 @@
 dec.yuv
 rec.yuv
 str.bin
-/build/
-/bin/
-/lib/
 core
 deploy
 *.sdf

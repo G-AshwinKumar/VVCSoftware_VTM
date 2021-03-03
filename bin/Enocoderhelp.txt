@@ -1,0 +1,2493 @@
+
+VVCSoftware: VTM Encoder Version 12.0 [Linux][GCC 9.3.0][64 bit] [SIMD=AVX2] 
+        --help                   this help text
+  -c                             configuration file name
+  -w,   --WarnUnknowParameter    warn for unknown configuration parameters
+                                 instead of failing
+        --isSDR                  compatibility
+        --SIMD                   SIMD extension to use (SCALAR, SSE41, SSE42, AVX, AVX2, AVX512), default: the highest supported extension
+                                 
+  -i,   --InputFile              Original YUV input file name
+  -ipp, --InputPathPrefix        pathname to prepend to input filename
+  -b,   --BitstreamFile          Bitstream output file name
+  -o,   --ReconFile              Reconstructed YUV output file name
+  -wdt, --SourceWidth            Source picture width
+  -hgt, --SourceHeight           Source picture height
+        --InputBitDepth          Bit-depth of input file
+        --OutputBitDepth         Bit-depth of output file
+                                 (default:InternalBitDepth)
+        --MSBExtendedBitDepth    bit depth of luma component after addition of
+                                 MSBs of value 0 (used for synthesising High
+                                 Dynamic Range source material).
+                                 (default:InputBitDepth)
+        --InternalBitDepth       Bit-depth the codec operates at. (default:
+                                 MSBExtendedBitDepth). If different to
+                                 MSBExtendedBitDepth, source data will be
+                                 converted
+        --InputBitDepthC         As per InputBitDepth but for chroma component.
+                                 (default:InputBitDepth)
+        --OutputBitDepthC        As per OutputBitDepth but for chroma component.
+                                 (default: use luma output bit-depth)
+        --MSBExtendedBitDepthC   As per MSBExtendedBitDepth but for chroma
+                                 component. (default:MSBExtendedBitDepth)
+        --ExtendedPrecision      Increased internal accuracies to support high
+                                 bit depths (not valid in V1 profiles)
+        --HighPrecisionPredictionWeighting
+                                 Use high precision option for weighted
+                                 prediction (not valid in V1 profiles)
+        --InputColourSpaceConvertColour space conversion to apply to input
+                                 video. Permitted values are (empty
+                                 string=UNCHANGED) UNCHANGED, YCbCrtoYCrCb,
+                                 YCbCrtoYYY or RGBtoGBR
+        --SNRInternalColourSpace If true, then no colour space conversion is
+                                 applied prior to SNR, otherwise inverse of
+                                 input is applied.
+        --OutputInternalColourSpace
+                                 If true, then no colour space conversion is
+                                 applied for reconstructed video, otherwise
+                                 inverse of input is applied.
+        --InputChromaFormat      InputChromaFormatIDC
+        --MSEBasedSequencePSNR   0 (default) emit sequence PSNR only as a linear
+                                 average of the frame PSNRs, 1 = also emit a
+                                 sequence PSNR based on an average of the frame
+                                 MSEs
+        --PrintHexPSNR           0 (default) don't emit hexadecimal PSNR for
+                                 each frame, 1 = also emit hexadecimal PSNR
+                                 values
+        --PrintFrameMSE          0 (default) emit only bit count and PSNRs for
+                                 each frame, 1 = also emit MSE values
+        --PrintSequenceMSE       0 (default) emit only bit rate and PSNRs for
+                                 the whole sequence, 1 = also emit MSE values
+        --PrintMSSSIM            0 (default) do not print MS-SSIM scores, 1 =
+                                 print MS-SSIM scores for each frame and for the
+                                 whole sequence
+        --PrintWPSNR             0 (default) do not print HDR-PQ based wPSNR, 1
+                                 = print HDR-PQ based wPSNR
+        --CabacZeroWordPaddingEnabled
+                                 0 do not add conforming cabac-zero-words to bit
+                                 streams, 1 (default) = add cabac-zero-words as
+                                 required
+  -cf,  --ChromaFormatIDC        ChromaFormatIDC (400|420|422|444 or set 0
+                                 (default) for same as InputChromaFormat)
+        --ConformanceMode        Deprecated alias of ConformanceWindowMode
+        --ConformanceWindowMode  Window conformance mode (0: no window,
+                                 1:automatic padding, 2:padding, 3:conformance
+  -pdx, --HorizontalPadding      Horizontal source padding for conformance
+                                 window mode 2
+  -pdy, --VerticalPadding        Vertical source padding for conformance window
+                                 mode 2
+        --ConfLeft               Deprecated alias of ConfWinLeft
+        --ConfRight              Deprecated alias of ConfWinRight
+        --ConfTop                Deprecated alias of ConfWinTop
+        --ConfBottom             Deprecated alias of ConfWinBottom
+        --ConfWinLeft            Left offset for window conformance mode 3
+        --ConfWinRight           Right offset for window conformance mode 3
+        --ConfWinTop             Top offset for window conformance mode 3
+        --ConfWinBottom          Bottom offset for window conformance mode 3
+        --AccessUnitDelimiter    Enable Access Unit Delimiter NALUs
+        --EnablePictureHeaderInSliceHeader
+                                 Enable Picture Header in Slice Header
+  -fr,  --FrameRate              Frame rate
+  -fs,  --FrameSkip              Number of frames to skip at start of input YUV
+  -ts,  --TemporalSubsampleRatio Temporal sub-sample ratio when reading input
+                                 YUV
+  -f,   --FramesToBeEncoded      Number of frames to be encoded (default=all)
+        --ClipInputVideoToRec709Range
+                                 If true then clip input video to the Rec. 709
+                                 Range on loading when InternalBitDepth is less
+                                 than MSBExtendedBitDepth
+        --ClipOutputVideoToRec709Range
+                                 If true then clip output video to the Rec. 709
+                                 Range on saving when OutputBitDepth is less
+                                 than InternalBitDepth
+        --PYUV                   If true then output 10-bit and 12-bit YUV data
+                                 as 5-byte and 3-byte (respectively) packed YUV
+                                 data. Ignored for interlaced output.
+        --SummaryOutFilename     Filename to use for producing summary output
+                                 file. If empty, do not produce a file.
+        --SummaryPicFilenameBase Base filename to use for producing summary
+                                 picture output files. The actual filenames used
+                                 will have I.txt, P.txt and B.txt appended. If
+                                 empty, do not produce a file.
+        --SummaryVerboseness     Specifies the level of the verboseness of the
+                                 text output
+  -v,   --Verbosity              Specifies the level of the verboseness
+        --WhitePointDeltaE1      1st reference white point value
+        --WhitePointDeltaE2      2nd reference white point value
+        --WhitePointDeltaE3      3rd reference white point value
+        --MaxSampleValue         Maximum sample value for floats
+        --InputSampleRange       Sample Range
+        --InputColorPrimaries    Input Color Primaries
+        --EnableTFunctionLUT     Input Color Primaries
+        --ChromaLocation         Location of Chroma Samples
+        --ChromaUpsampleFilter   420 to 444 conversion filters
+        --CropOffsetLeft         Crop Offset Left position
+        --CropOffsetTop          Crop Offset Top position
+        --CropOffsetRight        Crop Offset Right position
+        --CropOffsetBottom       Crop Offset Bottom position
+        --CalculateHdrMetrics    Enable HDR metric calculation
+        --FieldCoding            Signals if it's a field based coding
+        --TopFieldFirst          In case of field based coding, signals whether
+                                 if it's a top field first or not
+        --EfficientFieldIRAPEnabled
+                                 Enable to code fields in a specific,
+                                 potentially more efficient, order.
+        --HarmonizeGopFirstFieldCoupleEnabled
+                                 Enables harmonization of Gop first field
+                                 couple
+        --Profile                Profile name to use for encoding. Use
+                                 [multilayer_]main_10[_444][_still_picture],
+                                 auto, or none
+        --Level                  Level limit to be used, eg 5.1, or none
+        --Tier                   Tier to use for interpretation of --Level (main
+                                 or high only)
+        --FrameOnlyConstraintFlagBitstream contains only frames
+        --MultiLayerEnabledFlag  Bitstream might contain more than one layer
+        --SubProfile             Sub-profile idc
+        --EnableDecodingCapabilityInformation
+                                 Enables writing of Decoding Capability
+                                 Information
+        --MaxBitDepthConstraint  Bit depth to use for profile-constraint for
+                                 RExt profiles. 0=automatically choose based
+                                 upon other parameters
+        --MaxChromaFormatConstraint
+                                 Chroma-format to use for the profile-constraint
+                                 for RExt profiles. 0=automatically choose based
+                                 upon other parameters
+        --GciPresentFlag         GCI field present
+        --IntraOnlyConstraintFlagValue of intra_only_constraint_flag
+        --AllLayersIndependentConstraintFlag
+                                 Indicate that all layers are independent
+        --OnePictureOnlyConstraintFlag
+                                 Value of general_intra_constraint_flag. Can
+                                 only be used for single frame encodings. Will
+                                 be set to true for still picture profiles
+        --MaxBitDepthConstraintIdc
+                                 Indicate that sps_bitdepth_minus8 plus 8 shall
+                                 be in the range of 0 to
+                                 m_maxBitDepthConstraintIdc
+        --MaxChromaFormatConstraintIdc
+                                 Indicate that sps_chroma_format_idc shall be in
+                                 the range of 0 to
+                                 m_maxChromaFormatConstraintIdc
+        --NoTrailConstraintFlag  Indicate that TRAIL is deactivated
+        --NoStsaConstraintFlag   Indicate that STSA is deactivated
+        --NoRaslConstraintFlag   Indicate that RSAL is deactivated
+        --NoRadlConstraintFlag   Indicate that RADL is deactivated
+        --NoIdrConstraintFlag    Indicate that IDR is deactivated
+        --NoCraConstraintFlag    Indicate that CRA is deactivated
+        --NoGdrConstraintFlag    Indicate that GDR is deactivated
+        --NoApsConstraintFlag    Indicate that APS is deactivated
+        --OneTilePerPicConstraintFlag
+                                 Indicate that each picture shall contain only
+                                 one tile
+        --PicHeaderInSliceHeaderConstraintFlag
+                                 Indicate that picture header is present in
+                                 slice header
+        --OneSlicePerPicConstraintFlag
+                                 Indicate that each picture shall contain only
+                                 one slice
+        --NoIdrRplConstraintFlag Indicate that RPL is not present in SH of IDR
+                                 slices
+        --NoRectSliceConstraintFlag
+                                 Indicate that rectagular slice is deactivated
+        --OneSlicePerSubpicConstraintFlag
+                                 Indicate that each subpicture shall contain
+                                 only one slice
+        --NoSubpicInfoConstraintFlag
+                                 Indicate that subpicture information is not
+                                 present
+        --MaxLog2CtuSizeConstraintIdc
+                                 Indicate that Log2CtuSize shall be in the range
+                                 of 0 to m_maxLog2CtuSizeConstraintIdc
+        --NoPartitionConstraintsOverrideConstraintFlag
+                                 Indicate that Partition Override is
+                                 deactivated
+        --MttConstraintFlag      Indicate that Mtt is deactivated
+        --NoQtbttDualTreeIntraConstraintFlag
+                                 Indicate that Qtbtt DualTree Intra is
+                                 deactivated
+        --NoPaletteConstraintFlagIndicate that PLT is deactivated
+        --NoIbcConstraintFlag    Indicate that IBC is deactivated
+        --NoIspConstraintFlag    Indicate that ISP is deactivated
+        --NoMrlConstraintFlag    Indicate that MRL is deactivated
+        --NoMipConstraintFlag    Indicate that MIP is deactivated
+        --NoCclmConstraintFlag   Indicate that CCLM is deactivated
+        --NoRprConstraintFlag    Indicate that reference picture resampling is
+                                 deactivated
+        --NoResChangeInClvsConstraintFlag
+                                 Indicate that the picture spatial resolution
+                                 does not change within any CLVS referring to
+                                 the SPS
+        --WeightedPredictionConstraintFlag
+                                 Indicate that Weighted Prediction is
+                                 deactivated
+        --NoRefWraparoundConstraintFlag
+                                 Indicate that Reference Wraparound is
+                                 deactivated
+        --NoTemporalMvpConstraintFlag
+                                 Indicate that temporal MVP is deactivated
+        --NoSbtmvpConstraintFlag Indicate that SbTMVP is deactivated
+        --NoAmvrConstraintFlag   Indicate that AMVR is deactivated
+        --NoSmvdConstraintFlag   Indicate that SMVD is deactivated
+        --NoBdofConstraintFlag   Indicate that BIO is deactivated
+        --NoDmvrConstraintFlag   Indicate that DMVR is deactivated
+        --NoMmvdConstraintFlag   Indicate that MMVD is deactivated
+        --NoAffineMotionConstraintFlag
+                                 Indicate that Affine is deactivated
+        --NoProfConstraintFlag   Indicate that PROF is deactivated
+        --NoBcwConstraintFlag    Indicate that BCW is deactivated
+        --NoCiipConstraintFlag   Indicate that CIIP is deactivated
+        --NoGpmConstraintFlag    Indicate that GPM is deactivated
+        --NoTransformSkipConstraintFlag
+                                 Indicate that Transform Skip is deactivated
+        --NoLumaTransformSize64ConstraintFlag
+                                 Indicate that Luma Transform Size 64 is
+                                 deactivated
+        --NoBDPCMConstraintFlag  Indicate that BDPCM is deactivated
+        --NoMtsConstraintFlag    Indicate that MTS is deactivated
+        --NoLfnstConstraintFlag  Indicate that LFNST is deactivated
+        --NoJointCbCrConstraintFlag
+                                 Indicate that JCCR is deactivated
+        --NoSbtConstraintFlag    Indicate that SBT is deactivated
+        --NoActConstraintFlag    Indicate that ACT is deactivated
+        --NoExplicitScaleListConstraintFlag
+                                 Indicate that explicit scaling list is
+                                 deactivated
+        --NoChromaQpOffsetConstraintFlag
+                                 Indicate that chroma qp offset is zero
+        --NoDepQuantConstraintFlag
+                                 Indicate that DQ is deactivated
+        --NoSignDataHidingConstraintFlag
+                                 Indicate that SDH is deactivated
+        --NoCuQpDeltaConstraintFlag
+                                 Indicate that CU QP delta is deactivated
+        --NoSaoConstraintFlag    Indicate that SAO is deactivated
+        --NoAlfConstraintFlag    Indicate that ALF is deactivated
+        --NoCCAlfConstraintFlag  Indicate that CCALF is deactivated
+        --NoLmcsConstraintFlag   Indicate that LMCS is deactivated
+        --NoLadfConstraintFlag   Indicate that LADF is deactivated
+        --NoVirtualBoundaryConstraintFlag
+                                 Indicate that virtual boundary is deactivated
+        --CTUSize                CTUSize (specifies the CTU size if QTBT is on)
+                                 [default: 128]
+        --Log2MinCuSize          Log2 min CU size
+        --SubPicInfoPresentFlag  equal to 1 specifies that subpicture parameters
+                                 are present in in the SPS RBSP syntax
+        --NumSubPics             specifies the number of subpictures
+        --SubPicSameSizeFlag     equal to 1 specifies that all subpictures in
+                                 the CLVS have the same width specified by
+                                 sps_subpic_width_minus1[ 0 ] and the same
+                                 height specified by sps_subpic_height_minus1[ 0
+                                 ].
+        --SubPicCtuTopLeftX      specifies horizontal position of top left CTU
+                                 of i-th subpicture in unit of CtbSizeY
+        --SubPicCtuTopLeftY      specifies vertical position of top left CTU of
+                                 i-th subpicture in unit of CtbSizeY
+        --SubPicWidth            specifies the width of the i-th subpicture in
+                                 units of CtbSizeY
+        --SubPicHeight           specifies the height of the i-th subpicture in
+                                 units of CtbSizeY
+        --SubPicTreatedAsPicFlag equal to 1 specifies that the i-th subpicture
+                                 of each coded picture in the CLVS is treated as
+                                 a picture in the decoding process excluding
+                                 in-loop filtering operations
+        --LoopFilterAcrossSubpicEnabledFlag
+                                 equal to 1 specifies that in-loop filtering
+                                 operations may be performed across the
+                                 boundaries of the i-th subpicture in each coded
+                                 picture in the CLVS
+        --SubPicIdMappingExplicitlySignalledFlag
+                                 equal to 1 specifies that the subpicture ID
+                                 mapping is explicitly signalled, either in the
+                                 SPS or in the PPSs
+        --SubPicIdMappingInSpsFlag
+                                 equal to 1 specifies that subpicture ID mapping
+                                 is signalled in the SPS
+        --SubPicIdLen            specifies the number of bits used to represent
+                                 the syntax element sps_subpic_id[ i ]. 
+        --SubPicId               specifies that subpicture ID of the i-th
+                                 subpicture
+        --SingleSlicePerSubpic   Enables setting of a single slice per
+                                 sub-picture (no explicit configuration
+                                 required)
+        --EnablePartitionConstraintsOverride
+                                 Enable partition constraints override
+        --MinQTISlice            MinQTISlice
+        --MinQTLumaISlice        MinQTLumaISlice
+        --MinQTChromaISliceInChromaSamples
+                                 MinQTChromaISliceInChromaSamples
+        --MinQTNonISlice         MinQTNonISlice
+        --MaxMTTHierarchyDepth   MaxMTTHierarchyDepth
+        --MaxMTTHierarchyDepthI  MaxMTTHierarchyDepthI
+        --MaxMTTHierarchyDepthISliceL
+                                 MaxMTTHierarchyDepthISliceL
+        --MaxMTTHierarchyDepthISliceC
+                                 MaxMTTHierarchyDepthISliceC
+        --MaxBTLumaISlice        MaxBTLumaISlice
+        --MaxBTChromaISlice      MaxBTChromaISlice
+        --MaxBTNonISlice         MaxBTNonISlice
+        --MaxTTLumaISlice        MaxTTLumaISlice
+        --MaxTTChromaISlice      MaxTTChromaISlice
+        --MaxTTNonISlice         MaxTTNonISlice
+        --DualITree              Use separate QTBT trees for intra slice luma
+                                 and chroma channel types
+        --LFNST                  Enable LFNST (0:off, 1:on)  [default: off]
+        --FastLFNST              Fast methods for LFNST
+        --SbTMVP                 Enable Subblock Temporal Motion Vector
+                                 Prediction (0: off, 1: on) [default: off]
+        --MMVD                   Enable Merge mode with Motion Vector Difference
+                                 (0:off, 1:on)  [default: 1]
+        --Affine                 Enable affine prediction (0:off, 1:on)
+                                 [default: off]
+        --AffineType             Enable affine type prediction (0:off, 1:on)
+                                 [default: on]
+        --PROF                   Enable Prediction refinement with optical flow
+                                 for affine mode (0:off, 1:on)  [default: off]
+        --BIO                    Enable bi-directional optical flow
+        --IMV                    Adaptive MV precision Mode (IMV)
+                                 	0: disabled
+                                 	1: enabled (1/2-Pel, Full-Pel and 4-PEL)
+                                 
+        --IMV4PelFast            Fast 4-Pel Adaptive MV precision Mode
+                                 0:disabled, 1:enabled)  [default: 1]
+        --LMChroma                LMChroma prediction 	0:  Disable LMChroma
+                                 	1:  Enable LMChroma
+                                 
+        --HorCollocatedChroma    Specifies location of a chroma sample relatively to the luma sample in horizontal direction in the reference picture resampling
+                                 	0:  horizontally shifted by 0.5 units of luma samples
+                                 	1:  collocated (default)
+                                 
+        --VerCollocatedChroma    Specifies location of a chroma sample relatively to the luma sample in vertical direction in the cross-component linear model intra prediction and the reference picture resampling
+                                 	0:  horizontally co-sited, vertically shifted by 0.5 units of luma samples
+                                 	1:  collocated
+                                 
+        --MTS                    Multiple Transform Set (MTS)
+                                 	0:  Disable MTS
+                                 	1:  Enable only Intra MTS
+                                 	2:  Enable only Inter MTS
+                                 	3:  Enable both Intra & Inter MTS
+                                 
+        --MTSIntraMaxCand        Number of additional candidates to test in encoder search for MTS in intra slices
+                                 
+        --MTSInterMaxCand        Number of additional candidates to test in encoder search for MTS in inter slices
+                                 
+        --MTSImplicit            Enable implicit MTS (when explicit MTS is off)
+                                 
+        --SBT                    Enable Sub-Block Transform for inter blocks
+                                 
+        --SBTFast64WidthTh       Picture width threshold for testing size-64 SBT in RDO (now for HD and above sequences)
+                                 
+        --ISP                    Enable Intra Sub-Partitions
+                                 
+        --SMVD                   Enable Symmetric MVD
+                                 
+        --CompositeLTReference   Enable Composite Long Term Reference Frame
+        --BCW                    Enable Generalized Bi-prediction(Bcw)
+        --BcwFast                Fast methods for Generalized Bi-prediction(Bcw)
+                                 
+        --LADF                   Luma adaptive deblocking filter QP
+                                 Offset(L0414)
+        --LadfNumIntervals       LADF number of intervals (2-5, inclusive)
+        --LadfQpOffset           LADF QP offset
+        --LadfIntervalLowerBound LADF lower bound for 2nd lowest interval
+        --CIIP                   Enable CIIP mode
+        --Geo                    Enable geometric partitioning mode (0:off,
+                                 1:on)
+        --HashME                 Enable hash motion estimation (0:off, 1:on)
+        --AllowDisFracMMVD       Disable fractional MVD in MMVD mode adaptively
+        --AffineAmvr             Eanble AMVR for affine inter mode
+        --AffineAmvrEncOpt       Enable encoder optimization of affine AMVR
+        --DMVR                   Decoder-side Motion Vector Refinement
+        --MmvdDisNum             Number of MMVD Distance Entries
+        --ColorTransform         Enable the color transform
+        --PLT                    PLTMode (0x1:enabled, 0x0:disabled)  [default:
+                                 disabled]
+        --JointCbCr              Enable joint coding of chroma residuals
+                                 (JointCbCr, 0:off, 1:on)
+        --IBC                    IBCMode (0x1:enabled, 0x0:disabled)  [default:
+                                 disabled]
+        --IBCLocalSearchRangeX   Search range of IBC local search in x
+                                 direction
+        --IBCLocalSearchRangeY   Search range of IBC local search in y
+                                 direction
+        --IBCHashSearch          Hash based IBC search
+        --IBCHashSearchMaxCand   Max candidates for hash based IBC search
+        --IBCHashSearchRange4SmallBlk
+                                 Small block search range in based IBC search
+        --IBCFastMethod          Fast methods for IBC
+        --WrapAround             Enable horizontal wrap-around motion
+                                 compensation for inter prediction (0:off, 1:on)
+                                 [default: off]
+        --WrapAroundOffset       Offset in luma samples used for computing the
+                                 horizontal wrap-around position
+        --VirtualBoundariesPresentInSPSFlag
+                                 Virtual Boundary position information is
+                                 signalled in SPS or PH (1:SPS, 0:PH)  [default:
+                                 on]
+        --NumVerVirtualBoundariesNumber of vertical virtual boundaries (0-3,
+                                 inclusive)
+        --NumHorVirtualBoundariesNumber of horizontal virtual boundaries (0-3,
+                                 inclusive)
+        --VirtualBoundariesPosX  Locations of the vertical virtual boundaries in
+                                 units of luma samples
+        --VirtualBoundariesPosY  Locations of the horizontal virtual boundaries
+                                 in units of luma samples
+        --EncDbOpt               Encoder optimization with deblocking filter
+        --LMCSEnable             Enable LMCS (luma mapping with chroma scaling
+        --LMCSSignalType         Input signal type: 0:SDR, 1:HDR-PQ, 2:HDR-HLG
+        --LMCSUpdateCtrl         LMCS model update control: 0:RA, 1:AI,
+                                 2:LDB/LDP
+        --LMCSAdpOption          LMCS adaptation options:
+                                 0:automatic(default),1: rsp both (CW66 for
+                                 QP<=22), 2: rsp TID0 (for all QP),3: rsp
+                                 inter(CW66 for QP<=22), 4: rsp inter(for all
+                                 QP).
+        --LMCSInitialCW          LMCS initial total codeword (0~1023) when
+                                 LMCSAdpOption > 0
+        --LMCSOffset             LMCS chroma residual scaling offset
+        --IntraCMD               IntraChroma MD: 0: none, 1:fixed to default
+                                 wPSNR weight
+        --LCTUFast               Fast methods for large CTU
+        --FastMrg                Fast methods for inter merge
+        --PBIntraFast            Fast assertion if the intra mode is probable
+        --AMaxBT                 Adaptive maximal BT-size
+        --E0023FastEnc           Fast encoding setting for QTBT (proposal
+                                 E0023)
+        --ContentBasedFastQtbt   Signal based QTBT speed-up
+        --UseNonLinearAlfLuma    Non-linear adaptive loop filters for Luma
+                                 Channel
+        --UseNonLinearAlfChroma  Non-linear adaptive loop filters for Chroma
+                                 Channels
+        --MaxNumAlfAlternativesChroma
+                                 Maximum number of alternative Chroma filters
+                                 (1-8, inclusive)
+        --MRL                    Enable MRL (multiple reference line intra
+                                 prediction)
+        --MIP                    Enable MIP (matrix-based intra prediction)
+        --FastMIP                Fast encoder search for MIP (matrix-based intra
+                                 prediction)
+        --FastLocalDualTreeMode  Fast intra pass coding for local dual-tree in
+                                 intra coding region, 0: off, 1: use threshold,
+                                 2: one intra mode only
+        --MaxCUWidth
+        --MaxCUHeight
+  -s,   --MaxCUSize              Maximum CU size
+  -s,   --MaxCUSize              Maximum CU size
+        --Log2MaxTbSize          Maximum transform block size in logarithm base
+                                 2 (Default: 6)
+  -ip,  --IntraPeriod            Intra period in frames, (-1: only first frame)
+  -dr,  --DecodingRefreshType    Intra refresh type (0:none 1:CRA 2:IDR
+                                 3:RecPointSEI)
+  -g,   --GOPSize                GOP size of temporal structure
+        --DRAPPeriod             DRAP period in frames (0: disable Dependent RAP
+                                 indication SEI messages)
+        --ReWriteParamSets       Enable rewriting of Parameter sets before every
+                                 (intra) random access point
+        --IDRRefParamList        Enable indication of reference picture list
+                                 syntax elements in slice headers of IDR
+                                 pictures
+        --DisableIntraInInter    Flag to disable intra PUs in inter slices
+        --FastSearch             0:Full search 1:Diamond 2:Selective 3:Enhanced
+                                 Diamond
+  -sr,  --SearchRange            Motion search range
+        --BipredSearchRange      Motion search range for bipred refinement
+        --MinSearchWindow        Minimum motion search window size for the
+                                 adaptive window ME
+        --RestrictMESampling     Restrict ME Sampling for selective inter motion
+                                 search
+        --ClipForBiPredMEEnabled Enables clipping in the Bi-Pred ME. It is
+                                 disabled to reduce encoder run-time
+        --FastMEAssumingSmootherMVEnabled
+                                 Enables fast ME assuming a smoother MV.
+        --HadamardME             Hadamard ME for fractional-pel
+        --ASR                    Adaptive motion search range
+  -LM0, --LambdaModifier0        Lambda modifier for temporal layer 0. If
+                                 LambdaModifierI is used, this will not affect
+                                 intra pictures
+  -LM1, --LambdaModifier1        Lambda modifier for temporal layer 1. If
+                                 LambdaModifierI is used, this will not affect
+                                 intra pictures
+  -LM2, --LambdaModifier2        Lambda modifier for temporal layer 2. If
+                                 LambdaModifierI is used, this will not affect
+                                 intra pictures
+  -LM3, --LambdaModifier3        Lambda modifier for temporal layer 3. If
+                                 LambdaModifierI is used, this will not affect
+                                 intra pictures
+  -LM4, --LambdaModifier4        Lambda modifier for temporal layer 4. If
+                                 LambdaModifierI is used, this will not affect
+                                 intra pictures
+  -LM5, --LambdaModifier5        Lambda modifier for temporal layer 5. If
+                                 LambdaModifierI is used, this will not affect
+                                 intra pictures
+  -LM6, --LambdaModifier6        Lambda modifier for temporal layer 6. If
+                                 LambdaModifierI is used, this will not affect
+                                 intra pictures
+  -LMI, --LambdaModifierI        Lambda modifiers for Intra pictures, comma
+                                 separated, up to one the number of temporal
+                                 layer. If entry for temporalLayer exists, then
+                                 use it, else if some are specified, use the
+                                 last, else use the standard LambdaModifiers.
+  -IQF, --IQPFactor              Intra QP Factor for Lambda Computation. If
+                                 negative, the default will scale lambda based
+                                 on GOP size (unless LambdaFromQpEnable then
+                                 IntraQPOffset is used instead)
+  -q,   --QP                     Qp value
+  -qpif, --QPIncrementFrame      If a source file frame number is specified, the
+                                 internal QP will be incremented for all POCs
+                                 associated with source frames >= frame number.
+                                 If empty, do not increment.
+        --IntraQPOffset          Qp offset value for intra slice, typically
+                                 determined based on GOP size
+        --LambdaFromQpEnable     Enable flag for derivation of lambda from QP
+  -dqr, --DeltaQpRD              max dQp offset for slice
+  -d,   --MaxDeltaQP             max dQp offset for block
+  -dqd, --MaxCuDQPSubdiv         Maximum subdiv for CU luma Qp adjustment
+        --MaxCuChromaQpOffsetSubdiv
+                                 Maximum subdiv for CU chroma Qp adjustment -
+                                 set less than 0 to disable
+        --FastDeltaQP            Fast Delta QP Algorithm
+        --LumaLevelToDeltaQPMode Luma based Delta QP 0(default): not used. 1:
+                                 Based on CTU average, 2: Based on Max luma in
+                                 CTU
+        --LumaLevelToDeltaQPMappingLuma
+                                 Luma to Delta QP Mapping - luma thresholds
+        --LumaLevelToDeltaQPMappingDQP
+                                 Luma to Delta QP Mapping - DQP values
+        --UseIdentityTableForNon420Chroma
+                                 True: Indicates that 422/444 chroma uses
+                                 identity chroma QP mapping tables; False:
+                                 explicit Qp table may be specified in config
+        --SameCQPTablesForAllChroma
+                                 0: Different tables for Cb, Cr and joint Cb-Cr
+                                 components, 1 (default): Same tables for all
+                                 three chroma components
+        --QpInValCb              Input coordinates for the QP table for Cb
+                                 component
+        --QpOutValCb             Output coordinates for the QP table for Cb
+                                 component
+        --QpInValCr              Input coordinates for the QP table for Cr
+                                 component
+        --QpOutValCr             Output coordinates for the QP table for Cr
+                                 component
+        --QpInValCbCr            Input coordinates for the QP table for joint
+                                 Cb-Cr component
+        --QpOutValCbCr           Output coordinates for the QP table for joint
+                                 Cb-Cr component
+  -cbqpofs, --CbQpOffset         Chroma Cb QP Offset
+  -crqpofs, --CrQpOffset         Chroma Cr QP Offset
+        --CbQpOffsetDualTree     Chroma Cb QP Offset for dual tree
+        --CrQpOffsetDualTree     Chroma Cr QP Offset for dual tree
+  -cbcrqpofs, --CbCrQpOffset     QP Offset for joint Cb-Cr mode
+        --CbCrQpOffsetDualTree   QP Offset for joint Cb-Cr mode in dual tree
+        --WCGPPSEnable           1: Enable the WCG PPS chroma modulation scheme.
+                                 0 (default) disabled
+        --WCGPPSCbQpScale        WCG PPS Chroma Cb QP Scale
+        --WCGPPSCrQpScale        WCG PPS Chroma Cr QP Scale
+        --WCGPPSChromaQpScale    WCG PPS Chroma QP Scale
+        --WCGPPSChromaQpOffset   WCG PPS Chroma QP Offset
+        --SliceChromaQPOffsetPeriodicity
+                                 Used in conjunction with Slice Cb/Cr
+                                 QpOffsetIntraOrPeriodic. Use 0 (default) to
+                                 disable periodic nature.
+        --SliceCbQpOffsetIntraOrPeriodic
+                                 Chroma Cb QP Offset at slice level for I slice
+                                 or for periodic inter slices as defined by
+                                 SliceChromaQPOffsetPeriodicity. Replaces offset
+                                 in the GOP table.
+        --SliceCrQpOffsetIntraOrPeriodic
+                                 Chroma Cr QP Offset at slice level for I slice
+                                 or for periodic inter slices as defined by
+                                 SliceChromaQPOffsetPeriodicity. Replaces offset
+                                 in the GOP table.
+  -aq,  --AdaptiveQP             QP adaptation based on a psycho-visual model
+  -aqr, --MaxQPAdaptationRange   QP adaptation range
+  -qpa, --PerceptQPA             perceptually motivated input-adaptive QP
+                                 modification (default: 0 = off, ignored if -aq
+                                 is set)
+  -wpsnr, --WPSNR                output perceptually weighted peak SNR (WPSNR)
+                                 instead of PSNR
+  -m,   --dQPFile                dQP file name
+        --RDOQ
+        --RDOQTS
+        --SelectiveRDOQ          Enable selective RDOQ
+        --RDpenalty              RD-penalty for 32x32 TU for intra in non-intra
+                                 slices. 0:disabled  1:RD-penalty  2:maximum
+                                 RD-penalty
+        --LoopFilterDisable
+        --LoopFilterOffsetInPPS
+        --LoopFilterBetaOffset_div2
+        --LoopFilterTcOffset_div2
+        --LoopFilterCbBetaOffset_div2
+        --LoopFilterCbTcOffset_div2
+        --LoopFilterCrBetaOffset_div2
+        --LoopFilterCrTcOffset_div2
+        --DeblockingFilterMetric
+        --ReconBasedCrossCPredictionEstimate
+                                 When determining the alpha value for
+                                 cross-component prediction, use the decoded
+                                 residual rather than the pre-transform
+                                 encoder-side residual
+        --TransformSkip          Intra transform skipping
+        --TransformSkipFast      Fast encoder search for transform skipping,
+                                 winner takes it all mode.
+        --TransformSkipLog2MaxSize
+                                 Specify transform-skip maximum size. Minimum 2,
+                                 Maximum 5. (not valid in V1 profiles)
+        --ChromaTS               Enable encoder search of chromaTS
+        --BDPCM                  BDPCM (0:off, 1:luma and chroma)
+        --ISPFast                Fast encoder search for ISP
+        --ResidualRotation       Enable rotation of transform-skipped and
+                                 transquant-bypassed TUs through 180 degrees
+                                 prior to entropy coding (not valid in V1
+                                 profiles)
+        --SingleSignificanceMapContext
+                                 Enable, for transform-skipped and
+                                 transquant-bypassed TUs, the selection of a
+                                 single significance map context variable for
+                                 all coefficients (not valid in V1 profiles)
+        --GolombRiceParameterAdaptation
+                                 Enable the adaptation of the Golomb-Rice
+                                 parameter over the course of each slice
+        --AlignCABACBeforeBypass Align the CABAC engine to a defined fraction of
+                                 a bit prior to coding bypass data. Must be 1 in
+                                 high bit rate profile, 0 otherwise
+        --SAO                    Enable Sample Adaptive Offset
+        --TestSAODisableAtPictureLevel
+                                 Enables the testing of disabling SAO at the
+                                 picture level after having analysed all blocks
+        --SaoEncodingRate        When >0 SAO early picture termination is
+                                 enabled for luma and chroma
+        --SaoEncodingRateChroma  The SAO early picture termination rate to use
+                                 for chroma (when m_SaoEncodingRate is >0). If
+                                 <=0, use results for luma
+        --MaxNumOffsetsPerPic    Max number of SAO offset per picture (Default:
+                                 2048)
+        --SAOLcuBoundary         0: right/bottom CTU boundary areas skipped from
+                                 SAO parameter estimation, 1: non-deblocked
+                                 pixels are used for those areas
+        --SAOGreedyEnc           SAO greedy merge encoding algorithm
+        --EnablePicPartitioning  Enable picture partitioning (0: single tile,
+                                 single slice, 1: multiple tiles/slices can be
+                                 used)
+        --MixedLossyLossless     Enable encoder to encode mixed lossy/lossless
+                                 coding 
+        --SliceLosslessArray      Lossless slice array Last lossless flag in the
+                                 list will be repeated uniformly to cover any
+                                 remaining slice
+        --TileColumnWidthArray   Tile column widths in units of CTUs. Last
+                                 column width in list will be repeated uniformly
+                                 to cover any remaining picture width
+        --TileRowHeightArray     Tile row heights in units of CTUs. Last row
+                                 height in list will be repeated uniformly to
+                                 cover any remaining picture height
+        --RasterScanSlices       Indicates if using raster-scan or rectangular
+                                 slices (0: rectangular, 1: raster-scan)
+        --RectSlicePositions     Rectangular slice positions. List containing
+                                 pairs of top-left CTU RS address followed by
+                                 bottom-right CTU RS address
+        --RectSliceFixedWidth    Fixed rectangular slice width in units of tiles
+                                 (0: disable this feature and use
+                                 RectSlicePositions instead)
+        --RectSliceFixedHeight   Fixed rectangular slice height in units of
+                                 tiles (0: disable this feature and use
+                                 RectSlicePositions instead)
+        --RasterSliceSizes       Raster-scan slice sizes in units of tiles. Last
+                                 size in list will be repeated uniformly to
+                                 cover any remaining tiles in the picture
+        --DisableLoopFilterAcrossTiles
+                                 Loop filtering applied across tile boundaries
+                                 or not (0: filter across tile boundaries  1: do
+                                 not filter across tile boundaries)
+        --DisableLoopFilterAcrossSlices
+                                 Loop filtering applied across slice boundaries
+                                 or not (0: filter across slice boundaries 1: do
+                                 not filter across slice boundaries)
+        --FastUDIUseMPMEnabled   If enabled, adapt intra direction search,
+                                 accounting for MPM
+        --FastMEForGenBLowDelayEnabled
+                                 If enabled use a fast ME for generalised B Low
+                                 Delay slices
+        --UseBLambdaForNonKeyLowDelayPictures
+                                 Enables use of B-Lambda for non-key low-delay
+                                 pictures
+        --IntraReferenceSmoothing0: Disable use of intra reference smoothing
+                                 (not valid in V1 profiles). 1: Enable use of
+                                 intra reference smoothing (same as V1)
+  -wpP, --WeightedPredP          Use weighted prediction in P slices
+  -wpB, --WeightedPredB          Use weighted (bidirectional) prediction in B
+                                 slices
+  -wpM, --WeightedPredMethod     Weighted prediction method
+        --Log2ParallelMergeLevel Parallel merge estimation region
+        --WaveFrontSynchro       0: entropy coding sync disabled; 1 entropy
+                                 coding sync enabled
+        --EntryPointsPresent     0: entry points is not present; 1 entry points
+                                 may be present in slice header
+        --ScalingList            0/off: no scaling list, 1/default: default
+                                 scaling lists, 2/file: scaling lists specified
+                                 in ScalingListFile
+        --ScalingListFile        Scaling list file name. Use an empty string to
+                                 produce help.
+        --DisableScalingMatrixForLFNST
+                                 Disable scaling matrices, when enabled, for
+                                 LFNST-coded blocks
+        --DisableScalingMatrixForAlternativeColourSpace
+                                 Disable scaling matrices when the colour space
+                                 is not equal to the designated colour space of
+                                 scaling matrix
+        --ScalingMatrixDesignatedColourSpace
+                                 Indicates if the designated colour space of
+                                 scaling matrices is equal to the original
+                                 colour space
+        --DepQuant               Enable  dependent quantization (Default: 1)
+  -SBH, --SignHideFlag           Enable sign hiding
+        --MaxNumMergeCand        Maximum number of merge candidates
+        --MaxNumAffineMergeCand  Maximum number of affine merge candidates
+        --MaxNumGeoCand          Maximum number of geometric partitioning mode
+                                 candidates
+        --MaxNumIBCMergeCand     Maximum number of IBC merge candidates
+  -dph, --SEIDecodedPictureHash  Control generation of decode picture hash SEI messages
+                                 	3: checksum
+                                 	2: CRC
+                                 	1: use MD5
+                                 	0: disable
+        --SubpicDecodedPictureHash
+                                 Control generation of decode picture hash SEI messages for each subpicture
+                                 	3: checksum
+                                 	2: CRC
+                                 	1: use MD5
+                                 	0: disable
+        --TMVPMode               TMVP mode 0: TMVP disable for all slices. 1:
+                                 TMVP enable for all slices (default) 2: TMVP
+                                 enable for certain slices only
+        --SliceLevelRpl          Code reference picture lists in slice headers
+                                 rather than picture header.
+        --SliceLevelDblk         Code deblocking filter parameters in slice
+                                 headers rather than picture header.
+        --SliceLevelSao          Code SAO parameters in slice headers rather
+                                 than picture header.
+        --SliceLevelAlf          Code ALF parameters in slice headers rather
+                                 than picture header.
+        --SliceLevelWeightedPrediction
+                                 Code weighted prediction parameters in slice
+                                 headers rather than picture header.
+        --SliceLevelDeltaQp      Code delta Qp in slice headers rather than
+                                 picture header.
+        --FEN                    fast encoder setting
+        --ECU                    Early CU setting
+        --FDM                    Fast decision for Merge RD Cost
+        --ESD                    Early SKIP detection setting
+        --RateControl            Rate control: enable rate control
+        --TargetBitrate          Rate control: target bit-rate
+        --KeepHierarchicalBit    Rate control: 0: equal bit allocation; 1: fixed
+                                 ratio bit allocation; 2: adaptive ratio bit
+                                 allocation
+        --LCULevelRateControl    Rate control: true: CTU level RC; false:
+                                 picture level RC
+        --RCLCUSeparateModel     Rate control: use CTU level separate R-lambda
+                                 model
+        --InitialQP              Rate control: initial QP
+        --RCForceIntraQP         Rate control: force intra QP to be equal to
+                                 initial QP
+        --RCCpbSaturation        Rate control: enable target bits saturation to
+                                 avoid CPB overflow and underflow
+        --RCCpbSize              Rate control: CPB size
+        --RCInitialCpbFullness   Rate control: initial CPB fullness
+        --CostMode               Use alternative cost functions: choose between
+                                 'lossy', 'sequence_level_lossless', 'lossless'
+                                 (which forces QP to
+                                 LOSSLESS_AND_MIXED_LOSSLESS_RD_COST_TEST_QP)
+                                 and 'mixed_lossless_lossy' (which used
+                                 QP'=LOSSLESS_AND_MIXED_LOSSLESS_RD_COST_TEST_QP
+                                 _PRIME for pre-estimates of transquant-bypass
+                                 blocks).
+        --TSRCdisableLL          Disable TSRC for lossless coding
+        --RecalculateQPAccordingToLambda
+                                 Recalculate QP values according to lambda
+                                 values. Do not suggest to be enabled in all
+                                 intra case
+  -hrd, --HrdParametersPresent   Enable generation of hrd_parameters()
+  -vui, --VuiParametersPresent   Enable generation of vui_parameters()
+        --SamePicTimingInAllOLS  Indicates that the same picture timing SEI
+                                 message is used in all OLS
+        --AspectRatioInfoPresent Signals whether aspect_ratio_idc is present
+        --AspectRatioIdc         aspect_ratio_idc
+        --SarWidth               horizontal size of the sample aspect ratio
+        --SarHeight              vertical size of the sample aspect ratio
+        --ColourDescriptionPresent
+                                 Signals whether colour_primaries,
+                                 transfer_characteristics and
+                                 matrix_coefficients are present
+        --ColourPrimaries        Indicates chromaticity coordinates of the
+                                 source primaries
+        --TransferCharacteristicsIndicates the opto-electronic transfer
+                                 characteristics of the source
+        --MatrixCoefficients     Describes the matrix coefficients used in
+                                 deriving luma and chroma from RGB primaries
+        --ProgressiveSource      Indicate that source is progressive
+        --InterlacedSource       Indicate that source is interlaced
+        --NonPackedSourceConstraintFlag
+                                 Indicate that source does not contain frame
+                                 packing
+        --NonProjectedConstraintFlag
+                                 Indicate that the bitstream contains projection
+                                 SEI messages
+        --ChromaLocInfoPresent   Signals whether
+                                 chroma_sample_loc_type_top_field and
+                                 chroma_sample_loc_type_bottom_field are
+                                 present
+        --ChromaSampleLocTypeTopField
+                                 Specifies the location of chroma samples for
+                                 top field
+        --ChromaSampleLocTypeBottomField
+                                 Specifies the location of chroma samples for
+                                 bottom field
+        --ChromaSampleLocType    Specifies the location of chroma samples for
+                                 progressive content
+        --OverscanInfoPresent    Indicates whether conformant decoded pictures are suitable for display using overscan
+                                 
+        --OverscanAppropriate    Indicates whether conformant decoded pictures are suitable for display using overscan
+                                 
+        --VideoFullRange         Indicates the black level and range of luma and
+                                 chroma signals
+        --SEIBufferingPeriod     Control generation of buffering period SEI
+                                 messages
+        --SEIPictureTiming       Control generation of picture timing SEI
+                                 messages
+        --SEIDecodingUnitInfo    Control generation of decoding unit information
+                                 SEI message.
+        --SEIScalableNesting     Control generation of scalable nesting SEI
+                                 messages
+        --SEIFrameFieldInfo      Control generation of frame field information
+                                 SEI messages
+        --SEIFramePacking        Control generation of frame packing SEI
+                                 messages
+        --SEIFramePackingType    Define frame packing arrangement
+                                 	3: side by side - frames are displayed horizontally
+                                 	4: top bottom - frames are displayed vertically
+                                 	5: frame alternation - one frame is alternated
+                                 with the other
+        --SEIFramePackingId      Id of frame packing SEI message for a given
+                                 session
+        --SEIFramePackingQuincunxIndicate the presence of a Quincunx type video
+                                 frame
+        --SEIFramePackingInterpretation
+                                 Indicate the interpretation of the frame pair
+                                 	0: unspecified
+                                 	1: stereo pair, frame0 represents left view
+                                 	2: stereo pair, frame0 represents right view
+        --SEIParameterSetsInclusionIndication
+                                 Control generation of Parameter sets inclusion
+                                 indication SEI messages
+        --SEISelfContainedClvsFlag
+                                 Self contained CLVS indication flag value
+        --SEIMasteringDisplayColourVolume
+                                 Control generation of mastering display colour
+                                 volume SEI messages
+        --SEIMasteringDisplayMaxLuminance
+                                 Specifies the mastering display maximum
+                                 luminance value in units of 1/10000 candela per
+                                 square metre (32-bit code value)
+        --SEIMasteringDisplayMinLuminance
+                                 Specifies the mastering display minimum
+                                 luminance value in units of 1/10000 candela per
+                                 square metre (32-bit code value)
+        --SEIMasteringDisplayPrimaries
+                                 Mastering display primaries for all three
+                                 colour planes in CIE xy coordinates in
+                                 increments of 1/50000 (results in the ranges 0
+                                 to 50000 inclusive)
+        --SEIMasteringDisplayWhitePoint
+                                 Mastering display white point CIE xy
+                                 coordinates in normalised increments of 1/50000
+                                 (e.g. 0.333 = 16667)
+        --SEIPreferredTransferCharacteristics
+                                 Value for the
+                                 preferred_transfer_characteristics field of the
+                                 Alternative transfer characteristics SEI which
+                                 will override the corresponding entry in the
+                                 VUI. If negative, do not produce the respective
+                                 SEI message
+        --SEIErpEnabled          Control generation of equirectangular
+                                 projection SEI messages
+        --SEIErpCancelFlag       Indicate that equirectangular projection SEI
+                                 message cancels the persistence or follows
+        --SEIErpPersistenceFlag  Specifies the persistence of the
+                                 equirectangular projection SEI messages
+        --SEIErpGuardBandFlag    Indicate the existence of guard band areas in
+                                 the constituent picture
+        --SEIErpGuardBandType    Indicate the type of the guard band
+        --SEIErpLeftGuardBandWidth
+                                 Indicate the width of the guard band on the
+                                 left side of the constituent picture
+        --SEIErpRightGuardBandWidth
+                                 Indicate the width of the guard band on the
+                                 right side of the constituent picture
+        --SEISphereRotationEnabled
+                                 Control generation of sphere rotation SEI
+                                 messages
+        --SEISphereRotationCancelFlag
+                                 Indicate that sphere rotation SEI message
+                                 cancels the persistence or follows
+        --SEISphereRotationPersistenceFlag
+                                 Specifies the persistence of the sphere
+                                 rotation SEI messages
+        --SEISphereRotationYaw   Specifies the value of the yaw rotation angle
+        --SEISphereRotationPitch Specifies the value of the pitch rotation
+                                 angle
+        --SEISphereRotationRoll  Specifies the value of the roll rotation angle
+        --SEIOmniViewportEnabled Control generation of omni viewport SEI
+                                 messages
+        --SEIOmniViewportId      An identifying number that may be used to
+                                 identify the purpose of the one or more
+                                 recommended viewport regions
+        --SEIOmniViewportCancelFlag
+                                 Indicate that omni viewport SEI message cancels
+                                 the persistence or follows
+        --SEIOmniViewportPersistenceFlag
+                                 Specifies the persistence of the omni viewport
+                                 SEI messages
+        --SEIOmniViewportCntMinus1
+                                 specifies the number of recommended viewport
+                                 regions minus 1
+        --SEIOmniViewportAzimuthCentre
+                                 Indicate the centre of the i-th recommended
+                                 viewport region
+        --SEIOmniViewportElevationCentre
+                                 Indicate the centre of the i-th recommended
+                                 viewport region
+        --SEIOmniViewportTiltCentre
+                                 Indicates the tilt angle of the i-th
+                                 recommended viewport region
+        --SEIOmniViewportHorRangeIndicates the azimuth range of the i-th
+                                 recommended viewport region
+        --SEIOmniViewportVerRangeIndicates the elevation range of the i-th
+                                 recommended viewport region
+        --SEIRwpEnabled          Controls if region-wise packing SEI message
+                                 enabled
+        --SEIRwpCancelFlag       Specifies the persistence of any previous
+                                 region-wise packing SEI message in output
+                                 order.
+        --SEIRwpPersistenceFlag  Specifies the persistence of the region-wise
+                                 packing SEI message for the current layer.
+        --SEIRwpConstituentPictureMatchingFlag
+                                 Specifies the information in the SEI message
+                                 apply individually to each constituent picture
+                                 or to the projected picture.
+        --SEIRwpNumPackedRegions specifies the number of packed regions when
+                                 constituent picture matching flag is equal to
+                                 0.
+        --SEIRwpProjPictureWidth Specifies the width of the projected picture.
+        --SEIRwpProjPictureHeightSpecifies the height of the projected picture.
+        --SEIRwpPackedPictureWidth
+                                 specifies the width of the packed picture.
+        --SEIRwpPackedPictureHeight
+                                 Specifies the height of the packed picture.
+        --SEIRwpTransformType    specifies the rotation and mirroring to be
+                                 applied to the i-th packed region.
+        --SEIRwpGuardBandFlag    specifies the existence of guard band in the
+                                 i-th packed region.
+        --SEIRwpProjRegionWidth  specifies the width of the i-th projected
+                                 region.
+        --SEIRwpProjRegionHeight specifies the height of the i-th projected
+                                 region.
+        --SEIRwpProjRegionTop    specifies the top sample row of the i-th
+                                 projected region.
+        --SEIRwpProjRegionLeft   specifies the left-most sample column of the
+                                 i-th projected region.
+        --SEIRwpPackedRegionWidthspecifies the width of the i-th packed region.
+        --SEIRwpPackedRegionHeight
+                                 specifies the height of the i-th packed
+                                 region.
+        --SEIRwpPackedRegionTop  specifies the top luma sample row of the i-th
+                                 packed region.
+        --SEIRwpPackedRegionLeft specifies the left-most luma sample column of
+                                 the i-th packed region.
+        --SEIRwpLeftGuardBandWidth
+                                 specifies the width of the guard band on the
+                                 left side of the i-th packed region.
+        --SEIRwpRightGuardBandWidth
+                                 specifies the width of the guard band on the
+                                 right side of the i-th packed region.
+        --SEIRwpTopGuardBandHeight
+                                 specifies the height of the guard band above
+                                 the i-th packed region.
+        --SEIRwpBottomGuardBandHeight
+                                 specifies the height of the guard band below
+                                 the i-th packed region.
+        --SEIRwpGuardBandNotUsedForPredFlag
+                                 Specifies if the guard bands is used in the
+                                 inter prediction process.
+        --SEIRwpGuardBandType    Specifies the type of the guard bands for the
+                                 i-th packed region.
+        --SEIGcmpEnabled         Control generation of generalized cubemap
+                                 projection SEI messages
+        --SEIGcmpCancelFlag      Indicate that generalized cubemap projection
+                                 SEI message cancels the persistence or follows
+        --SEIGcmpPersistenceFlag Specifies the persistence of the generalized
+                                 cubemap projection SEI messages
+        --SEIGcmpPackingType     Specifies the packing type
+        --SEIGcmpMappingFunctionType
+                                 Specifies the mapping function used to adjust
+                                 the sample locations of the cubemap projection
+        --SEIGcmpFaceIndex       Specifies the face index for the i-th face
+        --SEIGcmpFaceRotation    Specifies the rotation to be applied to the
+                                 i-th face
+        --SEIGcmpFunctionCoeffU  Specifies the coefficient used in the cubemap
+                                 mapping function of the u-axis of the i-th
+                                 face
+        --SEIGcmpFunctionUAffectedByVFlag
+                                 Specifies whether the cubemap mapping function
+                                 of the u-axis refers to the v position of the
+                                 sample location
+        --SEIGcmpFunctionCoeffV  Specifies the coefficient used in the cubemap
+                                 mapping function of the v-axis of the i-th
+                                 face
+        --SEIGcmpFunctionVAffectedByUFlag
+                                 Specifies whether the cubemap mapping function
+                                 of the v-axis refers to the u position of the
+                                 sample location
+        --SEIGcmpGuardBandFlag   Indicate the existence of guard band areas in
+                                 the picture
+        --SEIGcmpGuardBandType   Indicate the type of the guard bands
+        --SEIGcmpGuardBandBoundaryExteriorFlag
+                                 Indicate whether face boundaries contain guard
+                                 bands
+        --SEIGcmpGuardBandSamplesMinus1
+                                 Specifies the number of guard band samples
+                                 minus1 used in the cubemap projected picture
+        --SEISubpicLevelInfoEnabled
+                                 Control generation of Subpicture Level
+                                 Information SEI messages
+        --SEISubpicLevelInfoRefLevels
+                                 List of reference levels for Subpicture Level
+                                 Information SEI messages
+        --SEISubpicLevelInfoExplicitFraction
+                                 Enable sending of explicit fractions in
+                                 Subpicture Level Information SEI messages
+        --SEISubpicLevelInfoNumSubpics
+                                 Number of subpictures for Subpicture Level
+                                 Information SEI messages
+  -ar,  --SEIAnnotatedRegionsFileRoot
+                                 Annotated region SEI parameters root file name
+                                 (wo num ext); only the file name base is to be
+                                 added. Underscore and POC would be
+                                 automatically addded to . E.g. "-ar ar" will
+                                 search for files ar_0.txt, ar_1.txt, ...
+        --SEISubpicLevelInfoMaxSublayers
+                                 Number of sublayers for Subpicture Level
+                                 Information SEI messages
+        --SEISubpicLevelInfoSublayerInfoPresentFlag
+                                 Enable sending of level information for all
+                                 sublayers in Subpicture Level Information SEI
+                                 messages
+        --SEISubpicLevelInfoRefLevelFractions
+                                 List of subpicture level fractions for
+                                 Subpicture Level Information SEI messages
+        --SEISubpicLevelInfoNonSubpicLayersFractions
+                                 List of level fractions for non-subpicture
+                                 layers in Subpicture Level Information SEI
+                                 messages
+        --SEISampleAspectRatioInfo
+                                 Control generation of Sample Aspect Ratio
+                                 Information SEI messages
+        --SEISARICancelFlag      Indicates that Sample Aspect Ratio Information
+                                 SEI message cancels the persistence or follows
+        --SEISARIPersistenceFlag Specifies the persistence of the Sample Aspect
+                                 Ratio Information SEI message
+        --SEISARIAspectRatioIdc  Specifies the Sample Aspect Ratio IDC of Sample
+                                 Aspect Ratio Information SEI messages
+        --SEISARISarWidth        Specifies the Sample Aspect Ratio Width of
+                                 Sample Aspect Ratio Information SEI messages,
+                                 if extended SAR is chosen.
+        --SEISARISarHeight       Specifies the Sample Aspect Ratio Height of
+                                 Sample Aspect Ratio Information SEI messages,
+                                 if extended SAR is chosen.
+        --MCTSEncConstraint      For MCTS, constrain motion vectors at tile
+                                 boundaries
+        --SEIFGCEnabled          Control generation of the film grain
+                                 characteristics SEI message
+        --SEIFGCCancelFlag       Specifies the persistence of any previous film
+                                 grain characteristics SEI message in output
+                                 order.
+        --SEIFGCPersistenceFlag  Specifies the persistence of the film grain
+                                 characteristics SEI message for the current
+                                 layer.
+        --SEIFGCModelID          Specifies the film grain simulation model. 0:
+                                 frequency filtering; 1: auto-regression.
+        --SEIFGCSepColourDescPresentFlag
+                                 Specifies the presence of a distinct colour
+                                 space description for the film grain
+                                 characteristics specified in the SEI message.
+        --SEIFGCBlendingModeID   Specifies the blending mode used to blend the
+                                 simulated film grain with the decoded images.
+                                 0: additive; 1: multiplicative.
+        --SEIFGCLog2ScaleFactor  Specifies a scale factor used in the film grain
+                                 characterization equations.
+        --SEIFGCCompModelPresentComp0
+                                 Specifies the presence of film grain modelling
+                                 on colour component 0.
+        --SEIFGCCompModelPresentComp1
+                                 Specifies the presence of film grain modelling
+                                 on colour component 1.
+        --SEIFGCCompModelPresentComp2
+                                 Specifies the presence of film grain modelling
+                                 on colour component 2.
+        --SEICLLEnabled          Control generation of the content light level
+                                 SEI message
+        --SEICLLMaxContentLightLevel
+                                 When not equal to 0, specifies an upper bound
+                                 on the maximum light level among all individual
+                                 samples in a 4:4:4 representation of red,
+                                 green, and blue colour primary intensities in
+                                 the linear light domain for the pictures of the
+                                 CLVS, in units of candelas per square
+                                 metre.When equal to 0, no such upper bound is
+                                 indicated.
+        --SEICLLMaxPicAvgLightLevel
+                                 When not equal to 0, specifies an upper bound
+                                 on the maximum average light level among the
+                                 samples in a 4:4:4 representation of red,
+                                 green, and blue colour primary intensities in
+                                 the linear light domain for any individual
+                                 picture of the CLVS, in units of candelas per
+                                 square metre.When equal to 0, no such upper
+                                 bound is indicated.
+        --SEIAVEEnabled          Control generation of the ambient viewing
+                                 environment SEI message
+        --SEIAVEAmbientIlluminance
+                                 Specifies the environmental illluminance of the
+                                 ambient viewing environment in units of 1/10000
+                                 lux for the ambient viewing environment SEI
+                                 message
+        --SEIAVEAmbientLightX    Specifies the normalized x chromaticity
+                                 coordinate of the environmental ambient light
+                                 in the nominal viewing enviornment according to
+                                 the CIE 1931 definition in units of 1/50000 lux
+                                 for the ambient viewing enviornment SEI
+                                 message
+        --SEIAVEAmbientLightY    Specifies the normalized y chromaticity
+                                 coordinate of the environmental ambient light
+                                 in the nominal viewing enviornment according to
+                                 the CIE 1931 definition in units of 1/50000 lux
+                                 for the ambient viewing enviornment SEI
+                                 message
+        --SEICCVEnabled          Control generation of the Content Colour Volume
+                                 SEI message
+        --SEICCVCancelFlag       Specifies the persistence of any previous
+                                 content colour volume SEI message in output
+                                 order.
+        --SEICCVPersistenceFlag  Specifies the persistence of the content colour
+                                 volume SEI message for the current layer.
+        --SEICCVPrimariesPresent Specifies whether the CCV primaries are present
+                                 in the content colour volume SEI message.
+        --m_ccvSEIPrimariesX0    Specifies the x coordinate of the first (green)
+                                 primary for the content colour volume SEI
+                                 message
+        --m_ccvSEIPrimariesY0    Specifies the y coordinate of the first (green)
+                                 primary for the content colour volume SEI
+                                 message
+        --m_ccvSEIPrimariesX1    Specifies the x coordinate of the second (blue)
+                                 primary for the content colour volume SEI
+                                 message
+        --m_ccvSEIPrimariesY1    Specifies the y coordinate of the second (blue)
+                                 primary for the content colour volume SEI
+                                 message
+        --m_ccvSEIPrimariesX2    Specifies the x coordinate of the third (red)
+                                 primary for the content colour volume SEI
+                                 message
+        --m_ccvSEIPrimariesY2    Specifies the y coordinate of the third (red)
+                                 primary for the content colour volume SEI
+                                 message
+        --SEICCVMinLuminanceValuePresent
+                                 Specifies whether the CCV min luminance value
+                                 is present in the content colour volume SEI
+                                 message
+        --SEICCVMinLuminanceValuespecifies the CCV min luminance value  in the
+                                 content colour volume SEI message
+        --SEICCVMaxLuminanceValuePresent
+                                 Specifies whether the CCV max luminance value
+                                 is present in the content colour volume SEI
+                                 message
+        --SEICCVMaxLuminanceValuespecifies the CCV max luminance value  in the
+                                 content colour volume SEI message
+        --SEICCVAvgLuminanceValuePresent
+                                 Specifies whether the CCV avg luminance value
+                                 is present in the content colour volume SEI
+                                 message
+        --SEICCVAvgLuminanceValuespecifies the CCV avg luminance value  in the
+                                 content colour volume SEI message
+        --DebugBitstream         Assume the frames up to POC DebugPOC will be
+                                 the same as in this bitstream. Load those
+                                 frames from the bitstream instead of encoding
+                                 them.
+        --DebugPOC               If DebugBitstream is present, load frames up to
+                                 this POC from this bitstream. Starting with
+                                 DebugPOC, return to normal encoding.
+        --DecodeBitstream1       Assume the frames up to POC DebugPOC will be
+                                 the same as in this bitstream. Load those
+                                 frames from the bitstream instead of encoding
+                                 them.
+        --DecodeBitstream2       Assume the frames up to POC DebugPOC will be
+                                 the same as in this bitstream. Load those
+                                 frames from the bitstream instead of encoding
+                                 them.
+        --SwitchPOC              If DebugBitstream is present, load frames up to
+                                 this POC from this bitstream. Starting with
+                                 DebugPOC, return to normal encoding.
+        --SwitchDQP              delta QP applied to picture with switchPOC and
+                                 subsequent pictures.
+        --FastForwardToPOC       Get to encoding the specified POC as soon as
+                                 possible by skipping temporal layers irrelevant
+                                 for the specified POC.
+        --StopAfterFFtoPOC       If using fast forward to POC, after the POC of
+                                 interest has been hit, stop further encoding.
+        --ForceDecodeBitstream1  force decoding of bitstream 1 - use this only
+                                 if you are realy sure about what you are doing
+        --DecodeBitstream2ModPOCAndType
+                                 Modify POC and NALU-type of second input
+                                 bitstream, to use second BS as closing I-slice
+        --NumSplitThreads        Number of threads used to parallelize
+                                 splitting
+        --ForceSingleSplitThread Force single thread execution even if taking
+                                 the parallelized path
+        --NumWppThreads          Number of threads used to run WPP-style
+                                 parallelization
+        --NumWppExtraLines       Number of additional wpp lines to switch when
+                                 threads are blocked
+        --DebugCTU               If DebugBitstream is present, load frames up to
+                                 this POC from this bitstream. Starting with
+                                 DebugPOC-frame at CTUline containin debug CTU.
+        --EnsureWppBitEqual      Ensure the results are equal to results with
+                                 WPP-style parallelism, even if WPP is off
+        --ALF                    Adaptive Loop Filter
+                                 
+        --ALFStrengthLuma        Adaptive Loop Filter strength for luma. The
+                                 parameter scales the magnitudes of the ALF
+                                 filter coefficients for luma. Valid range is
+                                 0.0 <= ALFStrengthLuma <= 1.0
+        --ALFAllowPredefinedFilters
+                                 Allow use of predefined filters for ALF
+        --CCALFStrength          Cross-component Adaptive Loop Filter strength.
+                                 The parameter scales the magnitudes of the
+                                 CCALF filter coefficients. Valid range is 0.0
+                                 <= CCALFStrength <= 1.0
+        --ALFStrengthChroma      Adaptive Loop Filter strength for chroma. The
+                                 parameter scales the magnitudes of the ALF
+                                 filter coefficients for chroma. Valid range is
+                                 0.0 <= ALFStrengthChroma <= 1.0
+        --ALFStrengthTargetLuma  Adaptive Loop Filter strength target for ALF
+                                 luma filter optimization. The parameter scales
+                                 the auto-correlation matrix E and the
+                                 cross-correlation vector y for luma. Valid
+                                 range is 0.0 <= ALFStrengthTargetLuma <= 1.0
+        --ALFStrengthTargetChromaAdaptive Loop Filter strength target for ALF
+                                 chroma filter optimization. The parameter
+                                 scales the auto-correlation matrix E and the
+                                 cross-correlation vector y for chroma. Valid
+                                 range is 0.0 <= ALFStrengthTargetChroma <= 1.0
+        --CCALFStrengthTarget    Cross-component Adaptive Loop Filter strength
+                                 target for filter optimization. The parameter
+                                 scales the auto-correlation matrix E and the
+                                 cross-correlation vector y. Valid range is 0.0
+                                 <= CCALFStrengthTarget <= 1.0
+        --CCALF                  Cross-component Adaptive Loop Filter
+        --CCALFQpTh              QP threshold above which encoder reduces CCALF
+                                 usage
+        --RPR                    Reference Sample Resolution
+        --ScalingRatioHor        Scaling ratio in hor direction
+        --ScalingRatioVer        Scaling ratio in ver direction
+        --FractionNumFrames      Encode a fraction of the specified in
+                                 FramesToBeEncoded frames
+        --SwitchPocPeriod        Switch POC period for RPR
+        --UpscaledOutput         Output upscaled (2), decoded but in full
+                                 resolution buffer (1) or decoded cropped (0,
+                                 default) picture for RPR
+        --MaxLayers              Max number of layers
+        --EnableOperatingPointInformation
+                                 Enables writing of Operating Point Information
+                                 (OPI)
+        --MaxTemporalLayer       Maximum temporal layer to be signalled in OPI
+        --TargetOutputLayerSet   Target output layer set index to be signalled
+                                 in OPI
+        --MaxSublayers           Max number of Sublayers
+        --DefaultPtlDpbHrdMaxTidFlag
+                                 specifies that the syntax elements
+                                 vps_ptl_max_tid[ i ], vps_dpb_max_tid[ i ], and
+                                 vps_hrd_max_tid[ i ] are not present and are
+                                 inferred to be equal to the default value
+                                 vps_max_sublayers_minus1
+        --AllIndependentLayersFlag
+                                 All layers are independent layer
+        --AllowablePredDirection prediction directions allowed for i-th temporal
+                                 layer
+        --LayerId0               Layer ID          
+        --LayerId1               Layer ID          
+        --LayerId2               Layer ID          
+        --LayerId3               Layer ID          
+        --LayerId4               Layer ID          
+        --LayerId5               Layer ID          
+        --LayerId6               Layer ID          
+        --LayerId7               Layer ID          
+        --LayerId8               Layer ID          
+        --LayerId9               Layer ID          
+        --LayerId10              Layer ID          
+        --LayerId11              Layer ID          
+        --LayerId12              Layer ID          
+        --LayerId13              Layer ID          
+        --LayerId14              Layer ID          
+        --LayerId15              Layer ID          
+        --LayerId16              Layer ID          
+        --LayerId17              Layer ID          
+        --LayerId18              Layer ID          
+        --LayerId19              Layer ID          
+        --LayerId20              Layer ID          
+        --LayerId21              Layer ID          
+        --LayerId22              Layer ID          
+        --LayerId23              Layer ID          
+        --LayerId24              Layer ID          
+        --LayerId25              Layer ID          
+        --LayerId26              Layer ID          
+        --LayerId27              Layer ID          
+        --LayerId28              Layer ID          
+        --LayerId29              Layer ID          
+        --LayerId30              Layer ID          
+        --LayerId31              Layer ID          
+        --LayerId32              Layer ID          
+        --LayerId33              Layer ID          
+        --LayerId34              Layer ID          
+        --LayerId35              Layer ID          
+        --LayerId36              Layer ID          
+        --LayerId37              Layer ID          
+        --LayerId38              Layer ID          
+        --LayerId39              Layer ID          
+        --LayerId40              Layer ID          
+        --LayerId41              Layer ID          
+        --LayerId42              Layer ID          
+        --LayerId43              Layer ID          
+        --LayerId44              Layer ID          
+        --LayerId45              Layer ID          
+        --LayerId46              Layer ID          
+        --LayerId47              Layer ID          
+        --LayerId48              Layer ID          
+        --LayerId49              Layer ID          
+        --LayerId50              Layer ID          
+        --LayerId51              Layer ID          
+        --LayerId52              Layer ID          
+        --LayerId53              Layer ID          
+        --LayerId54              Layer ID          
+        --LayerId55              Layer ID          
+        --LayerId56              Layer ID          
+        --LayerId57              Layer ID          
+        --LayerId58              Layer ID          
+        --LayerId59              Layer ID          
+        --LayerId60              Layer ID          
+        --LayerId61              Layer ID          
+        --LayerId62              Layer ID          
+        --LayerId63              Layer ID          
+        --NumRefLayers0          Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers1          Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers2          Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers3          Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers4          Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers5          Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers6          Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers7          Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers8          Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers9          Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers10         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers11         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers12         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers13         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers14         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers15         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers16         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers17         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers18         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers19         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers20         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers21         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers22         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers23         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers24         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers25         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers26         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers27         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers28         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers29         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers30         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers31         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers32         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers33         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers34         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers35         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers36         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers37         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers38         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers39         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers40         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers41         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers42         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers43         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers44         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers45         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers46         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers47         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers48         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers49         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers50         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers51         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers52         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers53         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers54         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers55         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers56         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers57         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers58         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers59         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers60         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers61         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers62         Number of direct reference layer index of i-th
+                                 layer          
+        --NumRefLayers63         Number of direct reference layer index of i-th
+                                 layer          
+        --RefLayerIdx0           Reference layer index(es)          
+        --RefLayerIdx1           Reference layer index(es)          
+        --RefLayerIdx2           Reference layer index(es)          
+        --RefLayerIdx3           Reference layer index(es)          
+        --RefLayerIdx4           Reference layer index(es)          
+        --RefLayerIdx5           Reference layer index(es)          
+        --RefLayerIdx6           Reference layer index(es)          
+        --RefLayerIdx7           Reference layer index(es)          
+        --RefLayerIdx8           Reference layer index(es)          
+        --RefLayerIdx9           Reference layer index(es)          
+        --RefLayerIdx10          Reference layer index(es)          
+        --RefLayerIdx11          Reference layer index(es)          
+        --RefLayerIdx12          Reference layer index(es)          
+        --RefLayerIdx13          Reference layer index(es)          
+        --RefLayerIdx14          Reference layer index(es)          
+        --RefLayerIdx15          Reference layer index(es)          
+        --RefLayerIdx16          Reference layer index(es)          
+        --RefLayerIdx17          Reference layer index(es)          
+        --RefLayerIdx18          Reference layer index(es)          
+        --RefLayerIdx19          Reference layer index(es)          
+        --RefLayerIdx20          Reference layer index(es)          
+        --RefLayerIdx21          Reference layer index(es)          
+        --RefLayerIdx22          Reference layer index(es)          
+        --RefLayerIdx23          Reference layer index(es)          
+        --RefLayerIdx24          Reference layer index(es)          
+        --RefLayerIdx25          Reference layer index(es)          
+        --RefLayerIdx26          Reference layer index(es)          
+        --RefLayerIdx27          Reference layer index(es)          
+        --RefLayerIdx28          Reference layer index(es)          
+        --RefLayerIdx29          Reference layer index(es)          
+        --RefLayerIdx30          Reference layer index(es)          
+        --RefLayerIdx31          Reference layer index(es)          
+        --RefLayerIdx32          Reference layer index(es)          
+        --RefLayerIdx33          Reference layer index(es)          
+        --RefLayerIdx34          Reference layer index(es)          
+        --RefLayerIdx35          Reference layer index(es)          
+        --RefLayerIdx36          Reference layer index(es)          
+        --RefLayerIdx37          Reference layer index(es)          
+        --RefLayerIdx38          Reference layer index(es)          
+        --RefLayerIdx39          Reference layer index(es)          
+        --RefLayerIdx40          Reference layer index(es)          
+        --RefLayerIdx41          Reference layer index(es)          
+        --RefLayerIdx42          Reference layer index(es)          
+        --RefLayerIdx43          Reference layer index(es)          
+        --RefLayerIdx44          Reference layer index(es)          
+        --RefLayerIdx45          Reference layer index(es)          
+        --RefLayerIdx46          Reference layer index(es)          
+        --RefLayerIdx47          Reference layer index(es)          
+        --RefLayerIdx48          Reference layer index(es)          
+        --RefLayerIdx49          Reference layer index(es)          
+        --RefLayerIdx50          Reference layer index(es)          
+        --RefLayerIdx51          Reference layer index(es)          
+        --RefLayerIdx52          Reference layer index(es)          
+        --RefLayerIdx53          Reference layer index(es)          
+        --RefLayerIdx54          Reference layer index(es)          
+        --RefLayerIdx55          Reference layer index(es)          
+        --RefLayerIdx56          Reference layer index(es)          
+        --RefLayerIdx57          Reference layer index(es)          
+        --RefLayerIdx58          Reference layer index(es)          
+        --RefLayerIdx59          Reference layer index(es)          
+        --RefLayerIdx60          Reference layer index(es)          
+        --RefLayerIdx61          Reference layer index(es)          
+        --RefLayerIdx62          Reference layer index(es)          
+        --RefLayerIdx63          Reference layer index(es)          
+        --EachLayerIsAnOlsFlag   Each layer is an OLS layer flag
+        --OlsModeIdc             Output layer set mode
+        --NumOutputLayerSets     Number of output layer sets
+        --OlsOutputLayer0        Output layer index of i-th OLS          
+        --OlsOutputLayer1        Output layer index of i-th OLS          
+        --OlsOutputLayer2        Output layer index of i-th OLS          
+        --OlsOutputLayer3        Output layer index of i-th OLS          
+        --OlsOutputLayer4        Output layer index of i-th OLS          
+        --OlsOutputLayer5        Output layer index of i-th OLS          
+        --OlsOutputLayer6        Output layer index of i-th OLS          
+        --OlsOutputLayer7        Output layer index of i-th OLS          
+        --OlsOutputLayer8        Output layer index of i-th OLS          
+        --OlsOutputLayer9        Output layer index of i-th OLS          
+        --OlsOutputLayer10       Output layer index of i-th OLS          
+        --OlsOutputLayer11       Output layer index of i-th OLS          
+        --OlsOutputLayer12       Output layer index of i-th OLS          
+        --OlsOutputLayer13       Output layer index of i-th OLS          
+        --OlsOutputLayer14       Output layer index of i-th OLS          
+        --OlsOutputLayer15       Output layer index of i-th OLS          
+        --OlsOutputLayer16       Output layer index of i-th OLS          
+        --OlsOutputLayer17       Output layer index of i-th OLS          
+        --OlsOutputLayer18       Output layer index of i-th OLS          
+        --OlsOutputLayer19       Output layer index of i-th OLS          
+        --OlsOutputLayer20       Output layer index of i-th OLS          
+        --OlsOutputLayer21       Output layer index of i-th OLS          
+        --OlsOutputLayer22       Output layer index of i-th OLS          
+        --OlsOutputLayer23       Output layer index of i-th OLS          
+        --OlsOutputLayer24       Output layer index of i-th OLS          
+        --OlsOutputLayer25       Output layer index of i-th OLS          
+        --OlsOutputLayer26       Output layer index of i-th OLS          
+        --OlsOutputLayer27       Output layer index of i-th OLS          
+        --OlsOutputLayer28       Output layer index of i-th OLS          
+        --OlsOutputLayer29       Output layer index of i-th OLS          
+        --OlsOutputLayer30       Output layer index of i-th OLS          
+        --OlsOutputLayer31       Output layer index of i-th OLS          
+        --OlsOutputLayer32       Output layer index of i-th OLS          
+        --OlsOutputLayer33       Output layer index of i-th OLS          
+        --OlsOutputLayer34       Output layer index of i-th OLS          
+        --OlsOutputLayer35       Output layer index of i-th OLS          
+        --OlsOutputLayer36       Output layer index of i-th OLS          
+        --OlsOutputLayer37       Output layer index of i-th OLS          
+        --OlsOutputLayer38       Output layer index of i-th OLS          
+        --OlsOutputLayer39       Output layer index of i-th OLS          
+        --OlsOutputLayer40       Output layer index of i-th OLS          
+        --OlsOutputLayer41       Output layer index of i-th OLS          
+        --OlsOutputLayer42       Output layer index of i-th OLS          
+        --OlsOutputLayer43       Output layer index of i-th OLS          
+        --OlsOutputLayer44       Output layer index of i-th OLS          
+        --OlsOutputLayer45       Output layer index of i-th OLS          
+        --OlsOutputLayer46       Output layer index of i-th OLS          
+        --OlsOutputLayer47       Output layer index of i-th OLS          
+        --OlsOutputLayer48       Output layer index of i-th OLS          
+        --OlsOutputLayer49       Output layer index of i-th OLS          
+        --OlsOutputLayer50       Output layer index of i-th OLS          
+        --OlsOutputLayer51       Output layer index of i-th OLS          
+        --OlsOutputLayer52       Output layer index of i-th OLS          
+        --OlsOutputLayer53       Output layer index of i-th OLS          
+        --OlsOutputLayer54       Output layer index of i-th OLS          
+        --OlsOutputLayer55       Output layer index of i-th OLS          
+        --OlsOutputLayer56       Output layer index of i-th OLS          
+        --OlsOutputLayer57       Output layer index of i-th OLS          
+        --OlsOutputLayer58       Output layer index of i-th OLS          
+        --OlsOutputLayer59       Output layer index of i-th OLS          
+        --OlsOutputLayer60       Output layer index of i-th OLS          
+        --OlsOutputLayer61       Output layer index of i-th OLS          
+        --OlsOutputLayer62       Output layer index of i-th OLS          
+        --OlsOutputLayer63       Output layer index of i-th OLS          
+        --NumPTLsInVPS           Number of profile_tier_level structures in VPS
+        --AvoidIntraInDepLayers  Replaces I pictures in dependent layers with B
+                                 pictures
+        --MaxTidILRefPicsPlusOneLayerId0
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId1
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId2
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId3
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId4
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId5
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId6
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId7
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId8
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId9
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId10
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId11
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId12
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId13
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId14
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId15
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId16
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId17
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId18
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId19
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId20
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId21
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId22
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId23
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId24
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId25
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId26
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId27
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId28
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId29
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId30
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId31
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId32
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId33
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId34
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId35
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId36
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId37
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId38
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId39
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId40
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId41
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId42
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId43
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId44
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId45
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId46
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId47
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId48
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId49
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId50
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId51
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId52
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId53
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId54
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId55
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId56
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId57
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId58
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId59
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId60
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId61
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId62
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --MaxTidILRefPicsPlusOneLayerId63
+                                 Maximum temporal ID for inter-layer reference
+                                 pictures plus 1 of i-th layer, 0 for IRAP
+                                 only          
+        --TemporalFilter         Enable GOP based temporal filter. Disabled per
+                                 default
+        --TemporalFilterFutureReference
+                                 Enable referencing of future frames in the GOP
+                                 based temporal filter. This is typically
+                                 disabled for Low Delay configurations.
+        --TemporalFilterStrengthFrame*
+                                 Strength for every * frame in GOP based
+                                 temporal filter, where * is an integer. E.g.
+                                 --TemporalFilterStrengthFrame8 0.95 will enable
+                                 GOP based temporal filter at every 8th frame
+                                 with strength 0.95
+        --Frame1
+        --Frame2
+        --Frame3
+        --Frame4
+        --Frame5
+        --Frame6
+        --Frame7
+        --Frame8
+        --Frame9
+        --Frame10
+        --Frame11
+        --Frame12
+        --Frame13
+        --Frame14
+        --Frame15
+        --Frame16
+        --Frame17
+        --Frame18
+        --Frame19
+        --Frame20
+        --Frame21
+        --Frame22
+        --Frame23
+        --Frame24
+        --Frame25
+        --Frame26
+        --Frame27
+        --Frame28
+        --Frame29
+        --Frame30
+        --Frame31
+        --Frame32
+        --Frame33
+        --Frame34
+        --Frame35
+        --Frame36
+        --Frame37
+        --Frame38
+        --Frame39
+        --Frame40
+        --Frame41
+        --Frame42
+        --Frame43
+        --Frame44
+        --Frame45
+        --Frame46
+        --Frame47
+        --Frame48
+        --Frame49
+        --Frame50
+        --Frame51
+        --Frame52
+        --Frame53
+        --Frame54
+        --Frame55
+        --Frame56
+        --Frame57
+        --Frame58
+        --Frame59
+        --Frame60
+        --Frame61
+        --Frame62
+        --Frame63
+        --Frame64
+        --LevelPTL0
+        --OlsPTLIdx0
+        --LevelPTL1
+        --OlsPTLIdx1
+        --LevelPTL2
+        --OlsPTLIdx2
+        --LevelPTL3
+        --OlsPTLIdx3
+        --LevelPTL4
+        --OlsPTLIdx4
+        --LevelPTL5
+        --OlsPTLIdx5
+        --LevelPTL6
+        --OlsPTLIdx6
+        --LevelPTL7
+        --OlsPTLIdx7
+        --LevelPTL8
+        --OlsPTLIdx8
+        --LevelPTL9
+        --OlsPTLIdx9
+        --LevelPTL10
+        --OlsPTLIdx10
+        --LevelPTL11
+        --OlsPTLIdx11
+        --LevelPTL12
+        --OlsPTLIdx12
+        --LevelPTL13
+        --OlsPTLIdx13
+        --LevelPTL14
+        --OlsPTLIdx14
+        --LevelPTL15
+        --OlsPTLIdx15
+        --LevelPTL16
+        --OlsPTLIdx16
+        --LevelPTL17
+        --OlsPTLIdx17
+        --LevelPTL18
+        --OlsPTLIdx18
+        --LevelPTL19
+        --OlsPTLIdx19
+        --LevelPTL20
+        --OlsPTLIdx20
+        --LevelPTL21
+        --OlsPTLIdx21
+        --LevelPTL22
+        --OlsPTLIdx22
+        --LevelPTL23
+        --OlsPTLIdx23
+        --LevelPTL24
+        --OlsPTLIdx24
+        --LevelPTL25
+        --OlsPTLIdx25
+        --LevelPTL26
+        --OlsPTLIdx26
+        --LevelPTL27
+        --OlsPTLIdx27
+        --LevelPTL28
+        --OlsPTLIdx28
+        --LevelPTL29
+        --OlsPTLIdx29
+        --LevelPTL30
+        --OlsPTLIdx30
+        --LevelPTL31
+        --OlsPTLIdx31
+        --LevelPTL32
+        --OlsPTLIdx32
+        --LevelPTL33
+        --OlsPTLIdx33
+        --LevelPTL34
+        --OlsPTLIdx34
+        --LevelPTL35
+        --OlsPTLIdx35
+        --LevelPTL36
+        --OlsPTLIdx36
+        --LevelPTL37
+        --OlsPTLIdx37
+        --LevelPTL38
+        --OlsPTLIdx38
+        --LevelPTL39
+        --OlsPTLIdx39
+        --LevelPTL40
+        --OlsPTLIdx40
+        --LevelPTL41
+        --OlsPTLIdx41
+        --LevelPTL42
+        --OlsPTLIdx42
+        --LevelPTL43
+        --OlsPTLIdx43
+        --LevelPTL44
+        --OlsPTLIdx44
+        --LevelPTL45
+        --OlsPTLIdx45
+        --LevelPTL46
+        --OlsPTLIdx46
+        --LevelPTL47
+        --OlsPTLIdx47
+        --LevelPTL48
+        --OlsPTLIdx48
+        --LevelPTL49
+        --OlsPTLIdx49
+        --LevelPTL50
+        --OlsPTLIdx50
+        --LevelPTL51
+        --OlsPTLIdx51
+        --LevelPTL52
+        --OlsPTLIdx52
+        --LevelPTL53
+        --OlsPTLIdx53
+        --LevelPTL54
+        --OlsPTLIdx54
+        --LevelPTL55
+        --OlsPTLIdx55
+        --LevelPTL56
+        --OlsPTLIdx56
+        --LevelPTL57
+        --OlsPTLIdx57
+        --LevelPTL58
+        --OlsPTLIdx58
+        --LevelPTL59
+        --OlsPTLIdx59
+        --LevelPTL60
+        --OlsPTLIdx60
+        --LevelPTL61
+        --OlsPTLIdx61
+        --LevelPTL62
+        --OlsPTLIdx62
+        --LevelPTL63
+        --OlsPTLIdx63
+        --LevelPTL64
+        --OlsPTLIdx64
+        --LevelPTL65
+        --OlsPTLIdx65
+        --LevelPTL66
+        --OlsPTLIdx66
+        --LevelPTL67
+        --OlsPTLIdx67
+        --LevelPTL68
+        --OlsPTLIdx68
+        --LevelPTL69
+        --OlsPTLIdx69
+        --LevelPTL70
+        --OlsPTLIdx70
+        --LevelPTL71
+        --OlsPTLIdx71
+        --LevelPTL72
+        --OlsPTLIdx72
+        --LevelPTL73
+        --OlsPTLIdx73
+        --LevelPTL74
+        --OlsPTLIdx74
+        --LevelPTL75
+        --OlsPTLIdx75
+        --LevelPTL76
+        --OlsPTLIdx76
+        --LevelPTL77
+        --OlsPTLIdx77
+        --LevelPTL78
+        --OlsPTLIdx78
+        --LevelPTL79
+        --OlsPTLIdx79
+        --LevelPTL80
+        --OlsPTLIdx80
+        --LevelPTL81
+        --OlsPTLIdx81
+        --LevelPTL82
+        --OlsPTLIdx82
+        --LevelPTL83
+        --OlsPTLIdx83
+        --LevelPTL84
+        --OlsPTLIdx84
+        --LevelPTL85
+        --OlsPTLIdx85
+        --LevelPTL86
+        --OlsPTLIdx86
+        --LevelPTL87
+        --OlsPTLIdx87
+        --LevelPTL88
+        --OlsPTLIdx88
+        --LevelPTL89
+        --OlsPTLIdx89
+        --LevelPTL90
+        --OlsPTLIdx90
+        --LevelPTL91
+        --OlsPTLIdx91
+        --LevelPTL92
+        --OlsPTLIdx92
+        --LevelPTL93
+        --OlsPTLIdx93
+        --LevelPTL94
+        --OlsPTLIdx94
+        --LevelPTL95
+        --OlsPTLIdx95
+        --LevelPTL96
+        --OlsPTLIdx96
+        --LevelPTL97
+        --OlsPTLIdx97
+        --LevelPTL98
+        --OlsPTLIdx98
+        --LevelPTL99
+        --OlsPTLIdx99
+        --LevelPTL100
+        --OlsPTLIdx100
+        --LevelPTL101
+        --OlsPTLIdx101
+        --LevelPTL102
+        --OlsPTLIdx102
+        --LevelPTL103
+        --OlsPTLIdx103
+        --LevelPTL104
+        --OlsPTLIdx104
+        --LevelPTL105
+        --OlsPTLIdx105
+        --LevelPTL106
+        --OlsPTLIdx106
+        --LevelPTL107
+        --OlsPTLIdx107
+        --LevelPTL108
+        --OlsPTLIdx108
+        --LevelPTL109
+        --OlsPTLIdx109
+        --LevelPTL110
+        --OlsPTLIdx110
+        --LevelPTL111
+        --OlsPTLIdx111
+        --LevelPTL112
+        --OlsPTLIdx112
+        --LevelPTL113
+        --OlsPTLIdx113
+        --LevelPTL114
+        --OlsPTLIdx114
+        --LevelPTL115
+        --OlsPTLIdx115
+        --LevelPTL116
+        --OlsPTLIdx116
+        --LevelPTL117
+        --OlsPTLIdx117
+        --LevelPTL118
+        --OlsPTLIdx118
+        --LevelPTL119
+        --OlsPTLIdx119
+        --LevelPTL120
+        --OlsPTLIdx120
+        --LevelPTL121
+        --OlsPTLIdx121
+        --LevelPTL122
+        --OlsPTLIdx122
+        --LevelPTL123
+        --OlsPTLIdx123
+        --LevelPTL124
+        --OlsPTLIdx124
+        --LevelPTL125
+        --OlsPTLIdx125
+        --LevelPTL126
+        --OlsPTLIdx126
+        --LevelPTL127
+        --OlsPTLIdx127
+        --LevelPTL128
+        --OlsPTLIdx128
+        --LevelPTL129
+        --OlsPTLIdx129
+        --LevelPTL130
+        --OlsPTLIdx130
+        --LevelPTL131
+        --OlsPTLIdx131
+        --LevelPTL132
+        --OlsPTLIdx132
+        --LevelPTL133
+        --OlsPTLIdx133
+        --LevelPTL134
+        --OlsPTLIdx134
+        --LevelPTL135
+        --OlsPTLIdx135
+        --LevelPTL136
+        --OlsPTLIdx136
+        --LevelPTL137
+        --OlsPTLIdx137
+        --LevelPTL138
+        --OlsPTLIdx138
+        --LevelPTL139
+        --OlsPTLIdx139
+        --LevelPTL140
+        --OlsPTLIdx140
+        --LevelPTL141
+        --OlsPTLIdx141
+        --LevelPTL142
+        --OlsPTLIdx142
+        --LevelPTL143
+        --OlsPTLIdx143
+        --LevelPTL144
+        --OlsPTLIdx144
+        --LevelPTL145
+        --OlsPTLIdx145
+        --LevelPTL146
+        --OlsPTLIdx146
+        --LevelPTL147
+        --OlsPTLIdx147
+        --LevelPTL148
+        --OlsPTLIdx148
+        --LevelPTL149
+        --OlsPTLIdx149
+        --LevelPTL150
+        --OlsPTLIdx150
+        --LevelPTL151
+        --OlsPTLIdx151
+        --LevelPTL152
+        --OlsPTLIdx152
+        --LevelPTL153
+        --OlsPTLIdx153
+        --LevelPTL154
+        --OlsPTLIdx154
+        --LevelPTL155
+        --OlsPTLIdx155
+        --LevelPTL156
+        --OlsPTLIdx156
+        --LevelPTL157
+        --OlsPTLIdx157
+        --LevelPTL158
+        --OlsPTLIdx158
+        --LevelPTL159
+        --OlsPTLIdx159
+        --LevelPTL160
+        --OlsPTLIdx160
+        --LevelPTL161
+        --OlsPTLIdx161
+        --LevelPTL162
+        --OlsPTLIdx162
+        --LevelPTL163
+        --OlsPTLIdx163
+        --LevelPTL164
+        --OlsPTLIdx164
+        --LevelPTL165
+        --OlsPTLIdx165
+        --LevelPTL166
+        --OlsPTLIdx166
+        --LevelPTL167
+        --OlsPTLIdx167
+        --LevelPTL168
+        --OlsPTLIdx168
+        --LevelPTL169
+        --OlsPTLIdx169
+        --LevelPTL170
+        --OlsPTLIdx170
+        --LevelPTL171
+        --OlsPTLIdx171
+        --LevelPTL172
+        --OlsPTLIdx172
+        --LevelPTL173
+        --OlsPTLIdx173
+        --LevelPTL174
+        --OlsPTLIdx174
+        --LevelPTL175
+        --OlsPTLIdx175
+        --LevelPTL176
+        --OlsPTLIdx176
+        --LevelPTL177
+        --OlsPTLIdx177
+        --LevelPTL178
+        --OlsPTLIdx178
+        --LevelPTL179
+        --OlsPTLIdx179
+        --LevelPTL180
+        --OlsPTLIdx180
+        --LevelPTL181
+        --OlsPTLIdx181
+        --LevelPTL182
+        --OlsPTLIdx182
+        --LevelPTL183
+        --OlsPTLIdx183
+        --LevelPTL184
+        --OlsPTLIdx184
+        --LevelPTL185
+        --OlsPTLIdx185
+        --LevelPTL186
+        --OlsPTLIdx186
+        --LevelPTL187
+        --OlsPTLIdx187
+        --LevelPTL188
+        --OlsPTLIdx188
+        --LevelPTL189
+        --OlsPTLIdx189
+        --LevelPTL190
+        --OlsPTLIdx190
+        --LevelPTL191
+        --OlsPTLIdx191
+        --LevelPTL192
+        --OlsPTLIdx192
+        --LevelPTL193
+        --OlsPTLIdx193
+        --LevelPTL194
+        --OlsPTLIdx194
+        --LevelPTL195
+        --OlsPTLIdx195
+        --LevelPTL196
+        --OlsPTLIdx196
+        --LevelPTL197
+        --OlsPTLIdx197
+        --LevelPTL198
+        --OlsPTLIdx198
+        --LevelPTL199
+        --OlsPTLIdx199
+        --LevelPTL200
+        --OlsPTLIdx200
+        --LevelPTL201
+        --OlsPTLIdx201
+        --LevelPTL202
+        --OlsPTLIdx202
+        --LevelPTL203
+        --OlsPTLIdx203
+        --LevelPTL204
+        --OlsPTLIdx204
+        --LevelPTL205
+        --OlsPTLIdx205
+        --LevelPTL206
+        --OlsPTLIdx206
+        --LevelPTL207
+        --OlsPTLIdx207
+        --LevelPTL208
+        --OlsPTLIdx208
+        --LevelPTL209
+        --OlsPTLIdx209
+        --LevelPTL210
+        --OlsPTLIdx210
+        --LevelPTL211
+        --OlsPTLIdx211
+        --LevelPTL212
+        --OlsPTLIdx212
+        --LevelPTL213
+        --OlsPTLIdx213
+        --LevelPTL214
+        --OlsPTLIdx214
+        --LevelPTL215
+        --OlsPTLIdx215
+        --LevelPTL216
+        --OlsPTLIdx216
+        --LevelPTL217
+        --OlsPTLIdx217
+        --LevelPTL218
+        --OlsPTLIdx218
+        --LevelPTL219
+        --OlsPTLIdx219
+        --LevelPTL220
+        --OlsPTLIdx220
+        --LevelPTL221
+        --OlsPTLIdx221
+        --LevelPTL222
+        --OlsPTLIdx222
+        --LevelPTL223
+        --OlsPTLIdx223
+        --LevelPTL224
+        --OlsPTLIdx224
+        --LevelPTL225
+        --OlsPTLIdx225
+        --LevelPTL226
+        --OlsPTLIdx226
+        --LevelPTL227
+        --OlsPTLIdx227
+        --LevelPTL228
+        --OlsPTLIdx228
+        --LevelPTL229
+        --OlsPTLIdx229
+        --LevelPTL230
+        --OlsPTLIdx230
+        --LevelPTL231
+        --OlsPTLIdx231
+        --LevelPTL232
+        --OlsPTLIdx232
+        --LevelPTL233
+        --OlsPTLIdx233
+        --LevelPTL234
+        --OlsPTLIdx234
+        --LevelPTL235
+        --OlsPTLIdx235
+        --LevelPTL236
+        --OlsPTLIdx236
+        --LevelPTL237
+        --OlsPTLIdx237
+        --LevelPTL238
+        --OlsPTLIdx238
+        --LevelPTL239
+        --OlsPTLIdx239
+        --LevelPTL240
+        --OlsPTLIdx240
+        --LevelPTL241
+        --OlsPTLIdx241
+        --LevelPTL242
+        --OlsPTLIdx242
+        --LevelPTL243
+        --OlsPTLIdx243
+        --LevelPTL244
+        --OlsPTLIdx244
+        --LevelPTL245
+        --OlsPTLIdx245
+        --LevelPTL246
+        --OlsPTLIdx246
+        --LevelPTL247
+        --OlsPTLIdx247
+        --LevelPTL248
+        --OlsPTLIdx248
+        --LevelPTL249
+        --OlsPTLIdx249
+        --LevelPTL250
+        --OlsPTLIdx250
+        --LevelPTL251
+        --OlsPTLIdx251
+        --LevelPTL252
+        --OlsPTLIdx252
+        --LevelPTL253
+        --OlsPTLIdx253
+        --LevelPTL254
+        --OlsPTLIdx254
+        --LevelPTL255
+        --OlsPTLIdx255

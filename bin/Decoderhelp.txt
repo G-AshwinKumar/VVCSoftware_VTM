@@ -1,0 +1,57 @@
+
+VVCSoftware: VTM Decoder Version 12.0 [Linux][GCC 9.3.0][64 bit] [SIMD=AVX2] 
+        --help                   this help text
+  -b,   --BitstreamFile          bitstream input file name
+  -o,   --ReconFile              reconstructed YUV output file name
+                                 
+  -opl, --OplFile                opl-file name without extension for conformance testing
+                                 
+        --SIMD                   SIMD extension to use (SCALAR, SSE41, SSE42, AVX, AVX2, AVX512), default: the highest supported extension
+                                 
+  -w,   --WarnUnknowParameter    warn for unknown configuration parameters
+                                 instead of failing
+  -s,   --SkipFrames             number of frames to skip before random access
+  -d,   --OutputBitDepth         bit depth of YUV output luma component
+                                 (default: use 0 for native depth)
+  -d,   --OutputBitDepthC        bit depth of YUV output chroma component
+                                 (default: use luma output bit-depth)
+        --OutputColourSpaceConvert
+                                 Colour space conversion to apply to input 444
+                                 video. Permitted values are (empty
+                                 string=UNCHANGED) UNCHANGED, YCrCbtoYCbCr or
+                                 GBRtoRGB
+  -t,   --MaxTemporalLayer       Maximum Temporal Layer to be decoded. -1 to
+                                 decode all layers
+  -p,   --TargetOutputLayerSet   Target output layer set index
+  -dph, --SEIDecodedPictureHash  Control handling of decoded picture hash SEI messages
+                                 	1: check hash in SEI messages if available in the bitstream
+                                 	0: ignore SEI message
+        --SEINoDisplay           Control handling of decoded no display SEI
+                                 messages
+  -l,   --TarDecLayerIdSetFile   targetDecLayerIdSet file name. The file should
+                                 include white space separated LayerId values to
+                                 be decoded. Omitting the option or a value of
+                                 -1 in the file decodes all layers.
+        --SEIColourRemappingInfoFilename
+                                 Colour Remapping YUV output file name. If empty, no remapping is applied (ignore SEI message)
+                                 
+        --SEIAnnotatedRegionsInfoFilename
+                                 Annotated regions output file name. If empty, no object information will be saved (ignore SEI message)
+                                 
+        --OutputDecodedSEIMessagesFilename
+                                 When non empty, output decoded SEI messages to the indicated file. If file is '-', then output to stdout
+                                 
+        --360DumpFile            When non empty, output decoded 360 SEI messages to the indicated file.
+                                 
+        --ClipOutputVideoToRec709Range
+                                 If true then clip output video to the Rec. 709
+                                 Range on saving
+        --PYUV                   If true then output 10-bit and 12-bit YUV data
+                                 as 5-byte and 3-byte (respectively) packed YUV
+                                 data. Ignored for interlaced output.
+        --MCTSCheck              If enabled, the decoder checks for violations
+                                 of mc_exact_sample_value_match_flag in Temporal
+                                 MCTS 
+        --targetSubPicIdx        Specify which subpicture shall be written to output, using subpic index, 0: disabled, subpicIdx=m_targetSubPicIdx-1 
+                                 
+        --UpscaledOutput         Upscaled output for RPR
