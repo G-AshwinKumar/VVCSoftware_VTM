@@ -1,0 +1,14 @@
+./EncoderAppStatic --SummaryVerboseness --InputFile=/home/ashwink/VVCSoftware_VTM/test/data/ISO_12640_2_n2_rgb-u8be-3x4096x3072.raw --BitstreamFile=video_2.vvc --SourceWidth=1564 --SourceHeight=1558 --FrameRate=25.000 --InputBitDepth=10 --OutputBitDepth=10 --MSBExtendedBitDepth=10 
+--MatrixCoefficients=9 --InputColorPrimaries=1 --LMCSSignalType=2 --ConformanceWindowMode=1 --FramesToBeEncoded=1 --HashME=1 --IBC=1 
+--DecodingRefreshType=1 --Profile=auto --InputSampleRange=1 --AspectRatioInfoPresent=1 --ChromaLocInfoPresent=1 
+--MaxCUWidth=16 --MaxCUHeight=16 --CTUSize=32 --MaxBTLumaISlice=32 --MaxBTChromaISlice=32 --MaxBTNonISlice=32 --MaxTTLumaISlice=32 --MaxTTChromaISlice=32 --MaxTTNonISlice=32 
+--CostMode=lossy --InputChromaFormat=420 --ChromaFormatIDC=420 --QP=28 --BDPCM=0 --ColorTransform=0 --VideoFullRange=0 --ChromaTS=1 --DepQuant=1 --LMCSEnable=1 --RDOQ=1 --RDOQTS=1 --SBT=1 --ISP=1 --MTS=1 --MTSIntraMaxCand=4 --MTSInterMaxCand=4 --LFNST=1 --JointCbCr=1 
+--LoopFilterDisable=1 --SAO=1 --TransformSkip=1 --TransformSkipFast=1 --TransformSkipLog2MaxSize=5 --SAOLcuBoundary=0 --ALF=1 --CCALF=1 --InternalBitDepth=10 
+--CostMode=lossless --InputChromaFormat=444 --ChromaFormatIDC=444 --QP=0 --BDPCM=2 --ColorTransform=1 --VideoFullRange=1 --ChromaTS=1 --DepQuant=0 --LMCSEnable=0 --RDOQ=0 --RDOQTS=0 --SBT=0 --ISP=0 --MTS=0 --LFNST=0 --JointCbCr=0 --VerCollocatedChroma=1
+--LoopFilterDisable=1 --SAO=0 --TransformSkip=1 --TransformSkipFast=1 --TransformSkipLog2MaxSize=5 --SAOLcuBoundary=0 --Log2MaxTbSize=5 --ALF=0 --CCALF=0 --BIO=0 --PROF=0 --InternalBitDepth=0 
+--IntraPeriod=1 --GOPSize=1 --SearchRange=64 --QpInValCb="17 22 34 42" --QpOutValCb="17 23 35 39" --BCW=0 --BcwFast=0 --BIO=0 --CIIP=0 --Geo=0 --AffineAmvr=0 --LMCSUpdateCtrl=1 --LMCSOffset=0 --DMVR=0 --SMVD=0 --PROF=0 --ISPFast=1 --FastMIP=1 --FastLFNST=1 --FastLocalDualTreeMode=0 --AffineAmvrEncOpt=0 --MmvdDisNum=8
+--OnePictureOnlyConstraintFlag=1 --IntraConstraintFlag=1 --Level=15.5 --Tier=high
+--RateControl=0 --SEIDecodedPictureHash=1 --MaxLayers=1 --CbQpOffset=1 --CrQpOffset=1 --TemporalSubsampleRatio=1 --LCTUFast=1 --TemporalFilter=0 --DualITree=1 
+--MinQTLumaISlice=8 --MinQTChromaISliceInChromaSamples=4 --MinQTNonISlice=8 --MaxMTTHierarchyDepth=3 --MaxMTTHierarchyDepthISliceL=3 --MaxMTTHierarchyDepthISliceC=3 --MMVD=1 
+--Affine=1 --SubPuMvp=1 --MaxNumMergeCand=6 --LMChroma=1 --IMV=1 --MRL=1 --IBC=0 --AllowDisFracMMVD=1 --MIP=1 --PBIntraFast=1 --FastMrg=1 --AMaxBT=1 --HadamardME=1 --FEN=1 --FDM=1
+-i /home/ashwink/VVCSoftware_VTM/test/data/ISO_12640_2_n2_rgb-u8be-3x4096x3072.raw -o recon.yuv -b str.bin --InputBitDepth=8 --InputBitDepthC=8 --SourceWidth=4096 --SourceHeight=3072 --FramesToBeEncoded=3 -c /home/ashwink/VVCSoftware_VTM/cfg/lossless/losslessRGB.cfg 
